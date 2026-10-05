@@ -33,14 +33,14 @@ async function providers(env) {
   if(new Set(map.values()).size!==2)throw new Error('Subscription providers could not be verified. Please try again later.');
   return map;
 }
-async function movie(id,env) {
-  const d=await tmdb(`movie/${id}`,env,{language:'en-GB',append_to_response:'keywords,credits'});
-  const s=seeds.find(x=>x.id===d.id);
-  return {id:`tmdb:${d.id}`,tmdbId:d.id,title:d.title,kind:'movie',year:d.release_date?.slice(0,4),overview:d.overview,
+async function movie(id,env,kind='movie') {
+  const d=await tmdb(`${kind}/${id}`,env,{language:'en-GB',append_to_response:'keywords,credits'});
+  const s=kind==='movie'?seeds.find(x=>x.id===d.id):null;
+  return {id:kind==='tv'?`tmdb:tv:${d.id}`:`tmdb:${d.id}`,tmdbId:d.id,title:d.title||d.name,kind,year:(d.release_date||d.first_air_date)?.slice(0,4),overview:d.overview,
     poster:d.poster_path?`https://image.tmdb.org/t/p/w342${d.poster_path}`:null,
-    genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||[]).map(x=>x.name),
+    genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||d.keywords?.results||[]).map(x=>x.name),
     cast:(d.credits?.cast||[]).slice(0,8).map(x=>x.name),directors:(d.credits?.crew||[]).filter(x=>x.job==='Director').map(x=>x.name),
-    categoryEvidence:s?.categoryEvidence||[],offers:[],adEvidence:[...(s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]),...primeEvidence.filter(x=>x.id===d.id)]};
+    categoryEvidence:s?.categoryEvidence||[],offers:[],adEvidence:[...(s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]),...(kind==='movie'?primeEvidence.filter(x=>x.id===d.id):[])]};
 }
 async function profile(env) {
   const r=await env.DB.prepare('SELECT profile, revision FROM household WHERE id = 1').first();
@@ -49,10 +49,10 @@ async function profile(env) {
 function validateProfile(p) {
   if(!p || p.country!=='GB' || !Array.isArray(p.services) || p.services.length>2 || p.services.some(s=>!['netflix','prime'].includes(s)) ||
     typeof p.genre!=='string' || p.genre.length>40 || typeof p.adOnly!=='boolean' || !p.feedback || Array.isArray(p.feedback) ||
-    Object.entries(p.feedback).length>500 || Object.entries(p.feedback).some(([k,v])=>!/^tmdb:\d+$/.test(k)||!ratings.includes(v)) ||
+    Object.entries(p.feedback).length>500 || Object.entries(p.feedback).some(([k,v])=>!/^tmdb:(?:tv:)?\d+$/.test(k)||!ratings.includes(v)) ||
     !Array.isArray(p.anchors) || p.anchors.length>500) throw new Error('Invalid taste profile.');
   for(const a of p.anchors) {
-    if(!/^tmdb:\d+$/.test(a.id)||typeof a.title!=='string'||a.title.length>300)throw new Error('Invalid film rating.');
+    if(!/^tmdb:(?:tv:)?\d+$/.test(a.id)||typeof a.title!=='string'||a.title.length>300)throw new Error('Invalid film rating.');
     for(const key of ['genres','tags','cast','directors'])if(!Array.isArray(a[key])||a[key].length>100||a[key].some(x=>typeof x!=='string'||x.length>200))throw new Error('Invalid film metadata.');
   }
   if(p.favourAD!==undefined&&typeof p.favourAD!=='boolean')throw new Error('Invalid AD preference.');
@@ -80,12 +80,13 @@ async function api(request,env) {
   }
   if(u.pathname==='/api/search') {
     const q=u.searchParams.get('q')?.trim();if(!q||q.length>100)return json({error:'Enter a film title (up to 100 characters).'},400);
-    const r=await tmdb('search/movie',env,{query:q,language:'en-GB',include_adult:false});
-    return json({results:r.results.slice(0,8).map(x=>({id:x.id,title:x.title,year:x.release_date?.slice(0,4)}))});
+    const r=await tmdb('search/multi',env,{query:q,language:'en-GB',include_adult:false});
+    return json({results:r.results.filter(x=>['movie','tv'].includes(x.media_type)).slice(0,8).map(x=>({id:x.id,kind:x.media_type,title:x.title||x.name,year:(x.release_date||x.first_air_date)?.slice(0,4)}))});
   }
   if(u.pathname==='/api/movie') {
     const id=u.searchParams.get('id');if(!/^\d{1,10}$/.test(id||''))return json({error:'Invalid film.'},400);
-    return json(await movie(id,env));
+    const kind=u.searchParams.get('kind')||'movie';if(!['movie','tv'].includes(kind))return json({error:'Invalid title type.'},400);
+    return json(await movie(id,env,kind));
   }
   if(u.pathname==='/api/candidates') {
     const page=Number(u.searchParams.get('page')||1), requested=u.searchParams.get('genre')||'', index=u.searchParams.get('index')==='1';
