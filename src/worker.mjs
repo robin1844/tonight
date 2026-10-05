@@ -82,7 +82,7 @@ async function api(request,env) {
     const q=u.searchParams.get('q')?.trim();if(!q||q.length>100)return json({error:'Enter a film title (up to 100 characters).'},400);
     const filmsOnly=u.searchParams.get('movies')==='1';
     const r=await tmdb(filmsOnly?'search/movie':'search/multi',env,{query:q,language:'en-GB',include_adult:false});
-    return json({results:r.results.filter(x=>filmsOnly||['movie','tv'].includes(x.media_type)).slice(0,8).map(x=>({id:x.id,kind:filmsOnly?'movie':x.media_type,title:x.title||x.name,year:(x.release_date||x.first_air_date)?.slice(0,4)}))});
+    return json({results:r.results.filter(x=>filmsOnly||['movie','tv'].includes(x.media_type)).slice(0,8).map(x=>({id:x.id,kind:filmsOnly?'movie':x.media_type,title:x.title||x.name,year:(x.release_date||x.first_air_date)?.slice(0,4),overview:x.overview||'',poster:x.poster_path?`https://image.tmdb.org/t/p/w342${x.poster_path}`:null}))});
   }
   if(u.pathname==='/api/availability') {
     const id=u.searchParams.get('id');if(!/^\d{1,10}$/.test(id||''))return json({error:'Invalid film.'},400);
