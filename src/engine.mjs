@@ -70,6 +70,22 @@ export function eligibleOffers(title, settings, now = Date.now()) {
   );
 }
 
+// Confidence describes the track on an eligible service, not subscription availability.
+export function adConfidence(title, settings, now=Date.now()) {
+  const offers=eligibleOffers(title,{...settings,adOnly:false},now);
+  let best={level:0,label:'AD unknown',source:null};
+  for(const a of title.adEvidence||[]) {
+    if(a.language!=='en'||!a.source||!fresh(a.checkedAt,now,settings.adMaxAge??30*DAY))continue;
+    const same=offers.some(o=>o.service===a.service);
+    let level=0;
+    if(same&&a.country===settings.country&&a.scope==='movie'&&a.status==='available')level=3;
+    else if(same&&a.scope==='movie'&&a.status==='likely')level=2;
+    else if(offers.length&&['available','likely','possible'].includes(a.status))level=1;
+    if(level>best.level)best={level,label:['AD unknown','AD possible · version unverified','AD likely · UK track unverified','English AD confirmed'][level],source:a.source,service:a.service};
+  }
+  return best;
+}
+
 // Feature families keep a long cast list from overwhelming genre/theme evidence.
 export function features(title) {
   return [...new Set([
@@ -103,7 +119,8 @@ export function rankTitles(catalogue, anchors, profile, now = Date.now()) {
   return catalogue.filter(t => t.kind === 'movie' && !seen.has(t.id) &&
     matchesCategory(t, profile.genre))
     .map(t => {
-      const offers = eligibleOffers(t, profile, now);
+      const offers = eligibleOffers(t, {...profile,adOnly:false}, now);
+      const ad = adConfidence(t,profile,now);
       const matched = features(t).filter(f => weights.has(f));
       const groups = new Map();
       for (const f of matched) {
@@ -116,9 +133,9 @@ export function rankTitles(catalogue, anchors, profile, now = Date.now()) {
       const reasons = matched.filter(f => weights.get(f) > 0)
         .sort((a,b) => importance[b.split(':')[0]] * weights.get(b) - importance[a.split(':')[0]] * weights.get(a))
         .slice(0,3).map(f => `Matches your interest in ${f.slice(f.indexOf(':') + 1)}.`);
-      return { ...t, offers, score, reasons: reasons.length ? reasons : ['Still learning your taste in this category.'] };
+      return { ...t, offers, score, ad, reasons: reasons.length ? reasons : ['Still learning your taste in this category.'] };
     }).filter(t => t.offers.length)
-    .sort((a,b) => b.score - a.score || a.title.localeCompare(b.title));
+    .sort((a,b) => (profile.favourAD?b.ad.level-a.ad.level:0) || b.score - a.score || a.title.localeCompare(b.title));
 }
 
 export function streamingOffers(show, checkedAt, country = 'GB') {

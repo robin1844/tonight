@@ -15,6 +15,15 @@ test('profile is saved durably and revisions prevent lost updates',async()=>{
   assert.equal((await worker.fetch(request({...p,genre:'Horror'},1),e)).status,409);
 });
 test('cross-origin saves are rejected',async()=>assert.equal((await worker.fetch(request(p,0,'https://other.example'),env())).status,403));
+test('legacy AD-only preferences migrate to favour AD without losing ratings',async()=>{
+  const e=env();const old={...p,adOnly:true,feedback:{'tmdb:1':'liked'}};
+  await worker.fetch(request(old,0),e);
+  const boot=await (await worker.fetch(new Request('https://tonight.example/api/boot'),e)).json();
+  assert.equal(boot.profile.favourAD,true);assert.equal(boot.profile.adOnly,false);
+  assert.deepEqual(boot.profile.feedback,old.feedback);
+  const saved=await (await worker.fetch(request({...boot.profile,favourAD:false},1),e)).json();
+  assert.equal(saved.profile.favourAD,false);
+});
 test('invalid ratings and unsupported subscriptions cannot be saved',async()=>{
   for(const profile of [{...p,services:['starz']},{...p,country:'US'},{...p,feedback:{'tmdb:1':'made-up'}},{...p,anchors:[{id:'bad',title:'x'}]}])assert.equal((await worker.fetch(request(profile,0),env())).status,400);
 });
@@ -23,6 +32,6 @@ test('oversized profiles are rejected without writes',async()=>{
   assert.equal((await worker.fetch(r,env())).status,413);
 });
 test('site serves the real app and only permitted methods',async()=>{
-  const r=await worker.fetch(new Request('https://tonight.example/'),env());assert.equal(r.status,200);assert.match(await r.text(),/Teach Tonight your taste/);assert.ok(r.headers.get('Content-Security-Policy'));
+  const r=await worker.fetch(new Request('https://tonight.example/'),env());assert.equal(r.status,200);assert.match(await r.text(),/Your taste/);assert.ok(r.headers.get('Content-Security-Policy'));
   assert.equal((await worker.fetch(new Request('https://tonight.example/api/profile',{method:'DELETE'}),env())).status,405);
 });

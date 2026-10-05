@@ -3,9 +3,13 @@ import css from '../public/style.css';
 import client from '../public/app.js';
 import engine from './engine.mjs?raw';
 import seeds from './ad-seeds.json';
+import primeSeeds from './prime-ad-seeds.json';
+import reviewed from './prime-reviewed-evidence.json';
 import { tmdbOffers, CATEGORIES, normaliseCategory, matchesCategory, discoveryBranches, discoveryWindow } from './engine.mjs';
 
-const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romantic comedy',adOnly:false,feedback:{},anchors:[]};
+const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romantic comedy',adOnly:false,favourAD:false,feedback:{},anchors:[]};
+const primeEvidence=[...primeSeeds,...reviewed];
+const indexedIds=[...new Set([...seeds,...primeEvidence].map(s=>s.id))];
 const ratings = ['loved','liked','disliked','seen','unseen','not-tonight'];
 const headers = {'Content-Security-Policy':"default-src 'self'; img-src 'self' https://image.tmdb.org; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'self' https://*.chatgpt.com https://chatgpt.com; form-action 'self'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
 const json = (data,status=200) => new Response(JSON.stringify(data),{status,headers:{...headers,'Content-Type':'application/json','Cache-Control':'no-store'}});
@@ -36,7 +40,7 @@ async function movie(id,env) {
     poster:d.poster_path?`https://image.tmdb.org/t/p/w342${d.poster_path}`:null,
     genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||[]).map(x=>x.name),
     cast:(d.credits?.cast||[]).slice(0,8).map(x=>x.name),directors:(d.credits?.crew||[]).filter(x=>x.job==='Director').map(x=>x.name),
-    categoryEvidence:s?.categoryEvidence||[],offers:[],adEvidence:s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]};
+    categoryEvidence:s?.categoryEvidence||[],offers:[],adEvidence:[...(s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]),...primeEvidence.filter(x=>x.id===d.id)]};
 }
 async function profile(env) {
   const r=await env.DB.prepare('SELECT profile, revision FROM household WHERE id = 1').first();
@@ -51,7 +55,8 @@ function validateProfile(p) {
     if(!/^tmdb:\d+$/.test(a.id)||typeof a.title!=='string'||a.title.length>300)throw new Error('Invalid film rating.');
     for(const key of ['genres','tags','cast','directors'])if(!Array.isArray(a[key])||a[key].length>100||a[key].some(x=>typeof x!=='string'||x.length>200))throw new Error('Invalid film metadata.');
   }
-  return {country:'GB',services:[...new Set(p.services)],genre:p.genre,adOnly:p.adOnly,feedback:p.feedback,
+  if(p.favourAD!==undefined&&typeof p.favourAD!=='boolean')throw new Error('Invalid AD preference.');
+  return {country:'GB',services:[...new Set(p.services)],genre:p.genre,adOnly:false,favourAD:p.favourAD??p.adOnly,feedback:p.feedback,
     anchors:p.anchors.map(a=>({id:a.id,title:a.title,year:a.year,genres:a.genres,tags:a.tags,cast:a.cast,directors:a.directors}))};
 }
 async function api(request,env) {
@@ -71,7 +76,7 @@ async function api(request,env) {
   if(request.method!=='GET')return json({error:'Method not allowed.'},405);
   if(u.pathname==='/api/boot') {
     const saved=await profile(env);
-    return json({...saved,profile:{...saved.profile,genre:normaliseCategory(saved.profile.genre)},genres:CATEGORIES,adCheckedAt:seeds[0].checkedAt});
+    return json({...saved,profile:{...saved.profile,adOnly:false,favourAD:saved.profile.favourAD??saved.profile.adOnly,genre:normaliseCategory(saved.profile.genre)},genres:CATEGORIES,adCheckedAt:seeds[0].checkedAt,indexPages:Math.ceil(indexedIds.length/20)});
   }
   if(u.pathname==='/api/search') {
     const q=u.searchParams.get('q')?.trim();if(!q||q.length>100)return json({error:'Enter a film title (up to 100 characters).'},400);
@@ -83,7 +88,7 @@ async function api(request,env) {
     return json(await movie(id,env));
   }
   if(u.pathname==='/api/candidates') {
-    const page=Number(u.searchParams.get('page')||1), requested=u.searchParams.get('genre')||'', adOnly=u.searchParams.get('ad')==='1';
+    const page=Number(u.searchParams.get('page')||1), requested=u.searchParams.get('genre')||'', index=u.searchParams.get('index')==='1';
     if(!Number.isInteger(page)||page<1||page>1000)return json({error:'Invalid selection.'},400);
     const g=await tmdb('genre/movie/list',env,{language:'en-GB'});
     const legacy=/^\d+$/.test(requested)?g.genres.find(x=>String(x.id)===requested)?.name:null;
@@ -91,7 +96,7 @@ async function api(request,env) {
     if(requested&&!category)return json({error:'Invalid category.'},400);
     const map=await providers(env);
     let ids, totalPages;
-    if(adOnly){const pool=category==='Romantic comedy'?seeds.filter(s=>s.categoryEvidence?.some(e=>e.category===category)):seeds;ids=pool.slice((page-1)*20,page*20).map(x=>x.id);totalPages=Math.max(1,Math.ceil(pool.length/20));}
+    if(index){ids=indexedIds.slice((page-1)*20,page*20);totalPages=Math.max(1,Math.ceil(indexedIds.length/20));}
     else{
       const branches=discoveryBranches(category,g.genres), supplemental=category==='Romantic comedy'?seeds.filter(s=>s.categoryEvidence?.some(e=>e.category===category)):[];
       const window=discoveryWindow(page,branches.length+(supplemental.length?1:0));
