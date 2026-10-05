@@ -64,7 +64,8 @@ export function discoveryWindow(page, branchCount) {
 }
 export function fresh(at, now, maxAge = DAY) {
   const t = Date.parse(at);
-  return Number.isFinite(t) && t <= now && now - t <= maxAge;
+  // A fresh server response can arrive a little ahead of the device clock.
+  return Number.isFinite(t) && t <= now + 60000 && now - t <= maxAge;
 }
 
 export function eligibleOffers(title, settings, now = Date.now()) {

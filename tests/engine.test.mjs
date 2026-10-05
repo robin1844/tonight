@@ -10,10 +10,11 @@ const ad = (changes={}) => ({country:'GB',service:'prime',language:'en',scope:'m
 test('base subscription is eligible',()=> assert.equal(eligibleOffers({offers:[offer()]},settings,now).length,1));
 for (const [label,changes] of Object.entries({rent:{type:'rent'},purchase:{type:'buy'},channel:{addon:'starz'},
   trial:{type:'trial'},wrongCountry:{country:'US'},wrongService:{service:'paramount'},charged:{price:{amount:'3.99'}},
-  stale:{checkedAt:new Date(now-DAY-1).toISOString()},future:{checkedAt:new Date(now+1).toISOString()},
+  stale:{checkedAt:new Date(now-DAY-1).toISOString()},future:{checkedAt:new Date(now+60001).toISOString()},
   missingDate:{checkedAt:null},expired:{expiresAt:checkedAt},invalidExpiry:{expiresAt:'not a date'}})) {
   test(`rejects ${label}`,()=>assert.equal(eligibleOffers({offers:[offer(changes)]},settings,now).length,0));
 }
+test('fresh server checks tolerate small device clock differences',()=>assert.equal(eligibleOffers({offers:[offer({checkedAt:new Date(now+500).toISOString()})]},settings,now).length,1));
 test('AD unknown is excluded only when required',()=>{
   assert.equal(eligibleOffers({offers:[offer()]},settings,now).length,1);
   assert.equal(eligibleOffers({offers:[offer()]},{...settings,adOnly:true},now).length,0);
