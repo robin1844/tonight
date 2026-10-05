@@ -1,5 +1,13 @@
 // No AI: deterministic eligibility and weighted, explainable feature matching.
 export const DAY = 86400000;
+export async function fillEmptySelection(state,{fetchPage,hasMatches,isCurrent=()=>true}) {
+  while(!hasMatches(state.titles)&&state.page<state.totalPages&&isCurrent()) {
+    const next=await fetchPage(state.page+1);
+    if(!isCurrent())return null;
+    state={page:next.page,totalPages:next.totalPages,titles:[...new Map([...state.titles,...next.titles].map(t=>[t.id,t])).values()]};
+  }
+  return isCurrent()?state:null;
+}
 export const CATEGORIES = [
   {id:'romantic-comedy',name:'Romantic comedy',genres:['Romance','Comedy'],mode:'all'},
   {id:'romance',name:'Romance',genres:['Romance']},

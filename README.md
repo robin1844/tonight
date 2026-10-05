@@ -59,3 +59,9 @@ The fixed 12-film popularity-ordered GB Prime romcom convenience sample was rech
 All loaded eligible films are rendered together without six-film selection pages. Additional discovery pages are fetched near the end of the list; the focusable continuation also triggers fetching for keyboard navigation. The entire remote catalogue is not fetched upfront. Favour AD and taste ranking remain active. Card explanations, AD badges/evidence, process counts and checkbox description have been removed. Provider credits remain inside How Tonight works. Watch links have identical visible and accessible names: View on Netflix / View on Prime.
 
 Title search now provides debounced suggestions from TMDB multi-search, filters out people, and opens the selected exact movie/TV identity. Emily in Paris can be rated, with TV ratings stored under a separate ID namespace; recommendations remain films. Browser form-history suggestions are disabled on this input.
+
+## Initial loading and availability search
+
+Initial loading now continues through empty/ineligible discovery batches until it finds matches or exhausts the available pages, with cancellation when the selected genre changes. More films is a native button (automatic loading near the list end also remains). Screen-reader status announcements clear after five seconds. Services are labelled My subscribed services; the list heading is Available to watch.
+
+Search for a film uses movie-only autocomplete and an exact-title GB availability endpoint. It returns the same card format for base subscription matches; rental, purchase, add-on and other-region offers do not qualify. The search ignores recommendation genre and watched filters. Its not-included message names the selected subscriptions. Local browser checks covered both outcomes; 49 tests pass including empty initial pages, cancellation and subscription eligibility for searched films.
