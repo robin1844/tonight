@@ -1,0 +1,6 @@
+node_modules/
+.env*
+.sites-runtime/
+dist/
+preview.sqlite*
+qa/

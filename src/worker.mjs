@@ -1,0 +1,117 @@
+import html from '../public/index.html';
+import css from '../public/style.css';
+import client from '../public/app.js';
+import engine from './engine.mjs?raw';
+import seeds from './ad-seeds.json';
+import { tmdbOffers } from './engine.mjs';
+
+const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romance',adOnly:false,feedback:{},anchors:[]};
+const ratings = ['loved','liked','disliked','seen','unseen','not-tonight'];
+const headers = {'Content-Security-Policy':"default-src 'self'; img-src 'self' https://image.tmdb.org; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'self' https://*.chatgpt.com https://chatgpt.com; form-action 'self'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
+const json = (data,status=200) => new Response(JSON.stringify(data),{status,headers:{...headers,'Content-Type':'application/json','Cache-Control':'no-store'}});
+const cache = new Map();
+async function tmdb(path, env, params={}) {
+  if(!env.TMDB_READ_TOKEN) throw new Error('The film catalogue is not connected.');
+  const u=new URL(`https://api.themoviedb.org/3/${path}`);
+  for(const [k,v] of Object.entries(params))u.searchParams.set(k,String(v));
+  const key=u.href, stored=cache.get(key);
+  if(stored && stored.until>Date.now()) return stored.value;
+  const r=await fetch(u,{headers:{Authorization:`Bearer ${env.TMDB_READ_TOKEN}`},signal:AbortSignal.timeout(12000)});
+  if(!r.ok)throw new Error('The film catalogue is temporarily unavailable. Please try again.');
+  const value=await r.json();
+  if(cache.size>400)cache.clear();
+  cache.set(key,{value,until:Date.now()+3600000});return value;
+}
+async function providers(env) {
+  const r=await tmdb('watch/providers/movie',env,{watch_region:'GB',language:'en-GB'});
+  const map=new Map();
+  for(const p of r.results){if(p.provider_name==='Netflix')map.set(p.provider_id,'netflix');if(p.provider_name==='Amazon Prime Video')map.set(p.provider_id,'prime');}
+  if(new Set(map.values()).size!==2)throw new Error('Subscription providers could not be verified. Please try again later.');
+  return map;
+}
+async function movie(id,env) {
+  const d=await tmdb(`movie/${id}`,env,{language:'en-GB',append_to_response:'keywords,credits'});
+  const s=seeds.find(x=>x.id===d.id);
+  return {id:`tmdb:${d.id}`,tmdbId:d.id,title:d.title,kind:'movie',year:d.release_date?.slice(0,4),overview:d.overview,
+    poster:d.poster_path?`https://image.tmdb.org/t/p/w342${d.poster_path}`:null,
+    genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||[]).map(x=>x.name),
+    cast:(d.credits?.cast||[]).slice(0,8).map(x=>x.name),directors:(d.credits?.crew||[]).filter(x=>x.job==='Director').map(x=>x.name),
+    offers:[],adEvidence:s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]};
+}
+async function profile(env) {
+  const r=await env.DB.prepare('SELECT profile, revision FROM household WHERE id = 1').first();
+  return r?{profile:JSON.parse(r.profile),revision:r.revision}:{profile:DEFAULT,revision:0};
+}
+function validateProfile(p) {
+  if(!p || p.country!=='GB' || !Array.isArray(p.services) || p.services.length>2 || p.services.some(s=>!['netflix','prime'].includes(s)) ||
+    typeof p.genre!=='string' || p.genre.length>40 || typeof p.adOnly!=='boolean' || !p.feedback || Array.isArray(p.feedback) ||
+    Object.entries(p.feedback).length>500 || Object.entries(p.feedback).some(([k,v])=>!/^tmdb:\d+$/.test(k)||!ratings.includes(v)) ||
+    !Array.isArray(p.anchors) || p.anchors.length>500) throw new Error('Invalid taste profile.');
+  for(const a of p.anchors) {
+    if(!/^tmdb:\d+$/.test(a.id)||typeof a.title!=='string'||a.title.length>300)throw new Error('Invalid film rating.');
+    for(const key of ['genres','tags','cast','directors'])if(!Array.isArray(a[key])||a[key].length>100||a[key].some(x=>typeof x!=='string'||x.length>200))throw new Error('Invalid film metadata.');
+  }
+  return {country:'GB',services:[...new Set(p.services)],genre:p.genre,adOnly:p.adOnly,feedback:p.feedback,
+    anchors:p.anchors.map(a=>({id:a.id,title:a.title,year:a.year,genres:a.genres,tags:a.tags,cast:a.cast,directors:a.directors}))};
+}
+async function api(request,env) {
+  const u=new URL(request.url);
+  if(request.method==='POST') {
+    if(request.headers.get('Origin')!==u.origin||!request.headers.get('Content-Type')?.startsWith('application/json'))return json({error:'This request must come from Tonight.'},403);
+    const body=await request.text();if(body.length>300000)return json({error:'The taste profile is too large.'},413);
+    let input;try{input=JSON.parse(body);}catch{return json({error:'Invalid request.'},400);}
+    if(u.pathname!=='/api/profile')return json({error:'Not found.'},404);
+    let p;try{p=validateProfile(input.profile);}catch(e){return json({error:e.message},400);}
+    if(!Number.isInteger(input.revision)||input.revision<0)return json({error:'Invalid profile version.'},400);
+    const value=JSON.stringify(p);
+    if(input.revision===0){const r=await env.DB.prepare('INSERT INTO household (id, profile, revision) VALUES (1, ?, 1) ON CONFLICT(id) DO NOTHING').bind(value).run();if(!r.meta.changes)return json({error:'Your taste changed in another tab. Reload before saving.'},409);}
+    else{const r=await env.DB.prepare('UPDATE household SET profile = ?, revision = revision + 1 WHERE id = 1 AND revision = ?').bind(value,input.revision).run();if(!r.meta.changes)return json({error:'Your taste changed in another tab. Reload before saving.'},409);}
+    return json({profile:p,revision:input.revision+1});
+  }
+  if(request.method!=='GET')return json({error:'Method not allowed.'},405);
+  if(u.pathname==='/api/boot') {
+    const [saved,g]=await Promise.all([profile(env),tmdb('genre/movie/list',env,{language:'en-GB'})]);
+    return json({...saved,genres:g.genres,adCheckedAt:seeds[0].checkedAt});
+  }
+  if(u.pathname==='/api/search') {
+    const q=u.searchParams.get('q')?.trim();if(!q||q.length>100)return json({error:'Enter a film title (up to 100 characters).'},400);
+    const r=await tmdb('search/movie',env,{query:q,language:'en-GB',include_adult:false});
+    return json({results:r.results.slice(0,8).map(x=>({id:x.id,title:x.title,year:x.release_date?.slice(0,4)}))});
+  }
+  if(u.pathname==='/api/movie') {
+    const id=u.searchParams.get('id');if(!/^\d{1,10}$/.test(id||''))return json({error:'Invalid film.'},400);
+    return json(await movie(id,env));
+  }
+  if(u.pathname==='/api/candidates') {
+    const page=Number(u.searchParams.get('page')||1), genre=u.searchParams.get('genre')||'', adOnly=u.searchParams.get('ad')==='1';
+    if(!Number.isInteger(page)||page<1||page>500||!/^\d*$/.test(genre))return json({error:'Invalid selection.'},400);
+    const map=await providers(env);
+    let ids, totalPages;
+    if(adOnly){ids=seeds.map(x=>x.id);totalPages=1;}
+    else{const r=await tmdb('discover/movie',env,{watch_region:'GB',with_watch_providers:[...map.keys()].join('|'),with_watch_monetization_types:'flatrate',with_genres:genre,language:'en-GB',include_adult:false,page});ids=r.results.map(x=>x.id);totalPages=Math.min(500,r.total_pages);}
+    const titles=[];
+    // Keep concurrency and subrequest counts bounded: <=43 catalogue calls per page.
+    for(let start=0;start<ids.length;start+=4) {
+      const chunk=await Promise.all(ids.slice(start,start+4).map(async id=>{
+        const [t,p]=await Promise.all([movie(id,env),tmdb(`movie/${id}/watch/providers`,env)]);
+        // Cache retrieval time is not underlying freshness. Limit it to one hour.
+        const key=`https://api.themoviedb.org/3/movie/${id}/watch/providers`;
+        const checkedAt=new Date((cache.get(key)?.until||Date.now()+3600000)-3600000).toISOString();
+        t.offers=tmdbOffers(p,map,checkedAt);
+        for(const o of t.offers){const s=seeds.find(x=>x.id===id);if(o.service==='netflix'&&s)o.directUrl=`https://www.netflix.com/gb/title/${s.netflix}`;}
+        return t;
+      }));titles.push(...chunk);
+    }
+    return json({titles,page,totalPages,checkedAt:new Date().toISOString(),adCoverage:'Four checked Netflix films; Prime AD is unverified.'});
+  }
+  return json({error:'Not found.'},404);
+}
+export default {async fetch(request,env) {
+  const path=new URL(request.url).pathname;
+  try {
+    if(path.startsWith('/api/'))return await api(request,env);
+    const routes={'/':[html,'text/html; charset=utf-8'],'/style.css':[css,'text/css'],'/app.js':[client,'text/javascript'],'/engine.mjs':[engine,'text/javascript']};
+    const item=routes[path];if(!item)return new Response('Not found',{status:404,headers});
+    return new Response(item[0],{headers:{...headers,'Content-Type':item[1],'Cache-Control':'no-cache'}});
+  }catch(e){console.error('Tonight request failed:',path,e.name);return json({error:path.startsWith('/api/')?e.message:'Tonight is temporarily unavailable.'},503);}
+}};
