@@ -1,0 +1,1382 @@
+[
+  {
+    "id": 114,
+    "title": "Pretty Woman",
+    "year": "1990",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-d4cddf96-fc7c-4a1a-ab19-f70f51e66252",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-d4cddf96-fc7c-4a1a-ab19-f70f51e66252"
+      }
+    ]
+  },
+  {
+    "id": 4951,
+    "title": "10 Things I Hate About You",
+    "year": "1999",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-46af23cb-79bc-4e57-90c0-1fc9661f8afe",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-46af23cb-79bc-4e57-90c0-1fc9661f8afe"
+      }
+    ]
+  },
+  {
+    "id": 18240,
+    "title": "The Proposal",
+    "year": "2009",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-595405af-f3c4-48ab-8fce-9633d0be25db",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-595405af-f3c4-48ab-8fce-9633d0be25db"
+      }
+    ]
+  },
+  {
+    "id": 2064,
+    "title": "While You Were Sleeping",
+    "year": "1995",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-710d442b-7c53-4f71-ab04-e984414af51e",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-710d442b-7c53-4f71-ab04-e984414af51e"
+      }
+    ]
+  },
+  {
+    "id": 4806,
+    "title": "Runaway Bride",
+    "year": "1999",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-f2dc787e-628d-4a6c-8223-6246dfa140d7",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-f2dc787e-628d-4a6c-8223-6246dfa140d7"
+      }
+    ]
+  },
+  {
+    "id": 11529,
+    "title": "Sweet Home Alabama",
+    "year": "2002",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-25e7c041-a86a-49b5-b8fb-8cc50fe3c145",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-25e7c041-a86a-49b5-b8fb-8cc50fe3c145"
+      }
+    ]
+  },
+  {
+    "id": 10934,
+    "title": "Under the Tuscan Sun",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-61acbc71-eb53-4edb-947b-5ae86c491909",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 12090,
+    "title": "Just Married",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-c85051e7-c4dc-46a1-bd9c-5097dbf727ff",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-c85051e7-c4dc-46a1-bd9c-5097dbf727ff"
+      }
+    ]
+  },
+  {
+    "id": 810171,
+    "title": "The Valet",
+    "year": "2022",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-ee848d26-cb68-4852-8364-4df3661ab66e",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 11355,
+    "title": "Never Been Kissed",
+    "year": "1999",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-373f53eb-3c52-445a-a4e7-57d892c9b567",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-373f53eb-3c52-445a-a4e7-57d892c9b567"
+      }
+    ]
+  },
+  {
+    "id": 81393,
+    "title": "12 Dates of Christmas",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-da3e1c5d-3fce-4244-9a65-299f0af118cc",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-da3e1c5d-3fce-4244-9a65-299f0af118cc"
+      }
+    ]
+  },
+  {
+    "id": 9820,
+    "title": "The Parent Trap",
+    "year": "1998",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-e00985cb-656a-4e5f-9df6-63eb5a46b271",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 6951,
+    "title": "Turner & Hooch",
+    "year": "1989",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-2e6244c8-3144-4459-9db4-d4b6d9eb9f07",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 35558,
+    "title": "Starstruck",
+    "year": "2010",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-cb929a70-b517-4095-ae5d-14c9f1de876f",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-cb929a70-b517-4095-ae5d-14c9f1de876f"
+      }
+    ]
+  },
+  {
+    "id": 2005,
+    "title": "Sister Act",
+    "year": "1992",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-64a57a99-3834-4891-8bf5-b104f1e65d48",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 2619,
+    "title": "Splash",
+    "year": "1984",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-93ab9b5f-54ed-4cd9-90c0-e929b6255bae",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-93ab9b5f-54ed-4cd9-90c0-e929b6255bae"
+      }
+    ]
+  },
+  {
+    "id": 9574,
+    "title": "Flubber",
+    "year": "1997",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-5bdaf284-333d-49da-9597-22b9db0b03c1",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 9413,
+    "title": "Picture Perfect",
+    "year": "1997",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-9b68ba19-ce22-4fcc-95fa-155379700045",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-9b68ba19-ce22-4fcc-95fa-155379700045"
+      }
+    ]
+  },
+  {
+    "id": 6557,
+    "title": "27 Dresses",
+    "year": "2008",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-82aa5096-8424-4d44-b04b-9f5253d22e34",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-82aa5096-8424-4d44-b04b-9f5253d22e34"
+      }
+    ]
+  },
+  {
+    "id": 21544,
+    "title": "Hope Springs",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-b9d8793d-db88-4db9-9802-15a20957adb6",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-b9d8793d-db88-4db9-9802-15a20957adb6"
+      }
+    ]
+  },
+  {
+    "id": 8696,
+    "title": "Calendar Girls",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-d5b1e174-f9fe-43c9-aa42-cebe40d89783",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 381284,
+    "title": "Hidden Figures",
+    "year": "2016",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-bd9d3f07-aefe-4e45-b421-ad2a745c3bb0",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 300673,
+    "title": "The Finest Hours",
+    "year": "2016",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-9dbf4c36-2edb-4f10-9515-91174e86e840",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 12919,
+    "title": "Can't Buy Me Love",
+    "year": "1987",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-b88cf413-30df-4670-bc16-86669f7a9883",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-b88cf413-30df-4670-bc16-86669f7a9883"
+      }
+    ]
+  },
+  {
+    "id": 7520,
+    "title": "Cocktail",
+    "year": "1988",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-77c5acf3-9f5f-4829-ac3f-1f6085fb4aaa",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 653349,
+    "title": "Vacation Friends",
+    "year": "2021",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-c5fec97e-4c47-4b46-b19f-c246d461f6d0",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 626332,
+    "title": "Flamin' Hot",
+    "year": "2023",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-b81d7e5b-e244-432c-af28-bedf3f8e7020",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 59962,
+    "title": "This Means War",
+    "year": "2012",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-388f078e-c148-469d-b82e-db1bcdd6e4c7",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-388f078e-c148-469d-b82e-db1bcdd6e4c7"
+      }
+    ]
+  },
+  {
+    "id": 9889,
+    "title": "Shallow Hal",
+    "year": "2001",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-47600863-a7e6-45ef-a98f-4f9e0fa817b0",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-47600863-a7e6-45ef-a98f-4f9e0fa817b0"
+      }
+    ]
+  },
+  {
+    "id": 19186,
+    "title": "The Parent Trap",
+    "year": "1961",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-943592d0-3ade-421f-b96a-5e46978caec9",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 9880,
+    "title": "The Princess Diaries",
+    "year": "2001",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-8bc7dd86-3b1c-4630-a095-7efadbc47579",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 18736,
+    "title": "The Lizzie McGuire Movie",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-cdb5deb3-5272-4078-95d9-01e866004c71",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 10330,
+    "title": "Freaky Friday",
+    "year": "2003",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-7754f6d2-ed31-4c9a-95dd-3c29a858fda6",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 13374,
+    "title": "Ice Princess",
+    "year": "2005",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-925bc7fe-9210-46a4-b575-6ed5cf87e425",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 11132,
+    "title": "Confessions of a Teenage Drama Queen",
+    "year": "2004",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-e8a90488-f219-46c9-8775-52c5f50dc3f3",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 13493,
+    "title": "College Road Trip",
+    "year": "2008",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-7f3c55c1-3c96-475c-baf8-01531642e752",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 26189,
+    "title": "Get a Clue",
+    "year": "2002",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-4eb234b0-c90f-475d-a5d0-a575869eefe0",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 454467,
+    "title": "Noelle",
+    "year": "2019",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-6458da6b-6e9c-4507-87bf-0d8a3e04997d",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 771,
+    "title": "Home Alone",
+    "year": "1990",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-45e4a68f-d9df-45f7-8e81-01b4ca5524e9",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 17037,
+    "title": "I'll Be Home for Christmas",
+    "year": "1998",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-6a389a73-7458-4f98-9761-874da99dfd77",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 81440,
+    "title": "Good Luck Charlie, It's Christmas!",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-9a2275bc-986f-468f-a8ba-e2b6504bea36",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 11395,
+    "title": "The Santa Clause",
+    "year": "1994",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-1216f88d-738f-4ead-b582-87dabb566373",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 550097,
+    "title": "No Sleep 'til Christmas",
+    "year": "2018",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-39a10815-fa74-4d80-b5bc-8df7a8ebff1e",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-39a10815-fa74-4d80-b5bc-8df7a8ebff1e"
+      }
+    ]
+  },
+  {
+    "id": 856,
+    "title": "Who Framed Roger Rabbit",
+    "year": "1988",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-40c47172-d2ea-452d-bb69-ca8f45bc2b9d",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 7095,
+    "title": "Jack",
+    "year": "1996",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-8240ff8f-7014-4f67-9b26-d22f0ed35c73",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 12710,
+    "title": "Big Business",
+    "year": "1988",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-1d79681c-c3c7-4983-b9f1-a832a7714741",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 9354,
+    "title": "Honey, I Shrunk the Kids",
+    "year": "1989",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-d3bd4647-6ecf-4aac-a4a5-6a9e7aa84580",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 10947,
+    "title": "High School Musical",
+    "year": "2006",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-75101ab0-a99f-40f5-b4b5-743c42dffca9",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-75101ab0-a99f-40f5-b4b5-743c42dffca9"
+      }
+    ]
+  },
+  {
+    "id": 114955,
+    "title": "Let it Shine",
+    "year": "2012",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-a73d8159-b1d8-4e4f-9ef4-65d310d43e7b",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 13655,
+    "title": "Camp Rock",
+    "year": "2008",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-fd9db4af-f471-408d-8978-e408f169f53f",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 177888,
+    "title": "Teen Beach Movie",
+    "year": "2013",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-2b95de09-d5b3-4433-9270-e13372df9875",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 65218,
+    "title": "Lemonade Mouth",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-899288a6-8535-4ef5-be91-f901a5775ba2",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 60405,
+    "title": "Sharpay's Fabulous Adventure",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-a97fad43-dfaa-40da-9a20-7d9bf6f9f791",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 60803,
+    "title": "The Suite Life Movie",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-96af7e6c-c33e-4507-b923-10c78935308b",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 81250,
+    "title": "Geek Charming",
+    "year": "2011",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-b34f7857-1076-4e79-bbc4-136136d309ab",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-b34f7857-1076-4e79-bbc4-136136d309ab"
+      }
+    ]
+  },
+  {
+    "id": 332,
+    "title": "Inspector Gadget",
+    "year": "1999",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-99c54193-d540-44b0-b800-54771dc81d87",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 33914,
+    "title": "Frankenweenie",
+    "year": "1984",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-68f3e659-5515-4ac8-b12d-4f2c7dd061dd",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 10249,
+    "title": "The Rocketeer",
+    "year": "1991",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-784e3efa-2fdc-43d8-bbc5-491d271586e5",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 97,
+    "title": "Tron",
+    "year": "1982",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-f6af5eaa-89c1-4107-8392-2f0c840b51ba",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 20526,
+    "title": "Tron: Legacy",
+    "year": "2010",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-02819aad-f773-4070-8f5f-c6048f984919",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 6279,
+    "title": "Sister Act 2: Back in the Habit",
+    "year": "1993",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-533bd0d0-c0a9-461d-984a-607daa1641bb",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 10022,
+    "title": "The Pacifier",
+    "year": "2005",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-46d11f04-6a95-421c-a0ae-284995c42325",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 38093,
+    "title": "Just Wright",
+    "year": "2010",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-d668d28d-319f-4461-9677-882415d9c8bf",
+    "checkedAt": "2026-10-05T19:11:21.855Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-d668d28d-319f-4461-9677-882415d9c8bf"
+      }
+    ]
+  },
+  {
+    "id": 790459,
+    "title": "Fingernails",
+    "year": "2023",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/fingernails/umc.cmc.5kr10v39ex4n13rrwxjzm3jy7",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 458220,
+    "title": "Palmer",
+    "year": "2021",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/palmer/umc.cmc.40qrv09i2yfh8iilyi4s8vfi",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1059811,
+    "title": "Flora and Son",
+    "year": "2023",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/flora-and-son/umc.cmc.1ol2idv8q2iftiyjfkuyfki5l",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 814340,
+    "title": "Cha Cha Real Smooth",
+    "year": "2022",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/cha-cha-real-smooth/umc.cmc.6loo9fah7vwj2zpp7ehactlpd",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 535308,
+    "title": "Hala",
+    "year": "2019",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/hala/umc.cmc.50urrw5kgscwaukyucgeuhyeq",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 640265,
+    "title": "The Sky Is Everywhere",
+    "year": "2022",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/the-sky-is-everywhere/umc.cmc.22xahad7xeqkok7u24xk0e788",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 595586,
+    "title": "Causeway",
+    "year": "2022",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/causeway/umc.cmc.30p2zn6vd14159dorn1vo68el",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 848538,
+    "title": "Argylle",
+    "year": "2024",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/argylle/umc.cmc.3qy6j44hfqtekx6fx3yzh9w8i",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1029575,
+    "title": "The Family Plan",
+    "year": "2023",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/the-family-plan/umc.cmc.6o6y3wel2lez2tkdu2cv8dzd1",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 950396,
+    "title": "The Gorge",
+    "year": "2025",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/the-gorge/umc.cmc.26o403koqo2klixc0jtqy6tmc",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1363123,
+    "title": "The Family Plan 2",
+    "year": "2025",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/the-family-plan-2/umc.cmc.1wj0ab94s7t1wy7sqv5dt6bfy",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1059064,
+    "title": "The Instigators",
+    "year": "2024",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/the-instigators/umc.cmc.3ocr6483492qm53io2bsy2o69",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1319965,
+    "title": "All of You",
+    "year": "2025",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/all-of-you/umc.cmc.3hac5oqhh3gxiu35spyu8fanf",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 662546,
+    "title": "Godmothered",
+    "year": "2020",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-132b2f67-6fb5-47d4-af8b-9df68abc18ef",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 654974,
+    "title": "Home Sweet Home Alone",
+    "year": "2021",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-086c64f7-e241-4faf-bef8-a71854f10b3c",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 15400,
+    "title": "Mickey's Once Upon a Christmas",
+    "year": "1999",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-04843734-f60a-411c-a11e-ca93225acf22",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 10437,
+    "title": "The Muppet Christmas Carol",
+    "year": "1992",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-d005716a-a1c6-4126-b5a0-df5fcd37f186",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 772,
+    "title": "Home Alone 2: Lost in New York",
+    "year": "1992",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-86cd0f62-cec4-4426-9e35-9f8263a550a6",
+    "checkedAt": "2026-10-05T19:12:14.167Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 776503,
+    "title": "CODA",
+    "year": "2021",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/coda/umc.cmc.3eh9r5iz32ggdm4ccvw5igiir",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 868759,
+    "title": "Ghosted",
+    "year": "2023",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/ghosted/umc.cmc.6nodv9rf3ltfk2ar3pfc8hced",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1259102,
+    "title": "Eternity",
+    "year": "2025",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/eternity/umc.cmc.4dlymcfscta2oo4u1whkzaqpl",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 765245,
+    "title": "Swan Song",
+    "year": "2021",
+    "service": "apple",
+    "country": "GB",
+    "language": "en",
+    "scope": "movie",
+    "status": "available",
+    "source": "https://tv.apple.com/gb/movie/swan-song/umc.cmc.2u5ulzjcxh7e50uhichjjlsv6",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "English AD listed in the UK title audio section; public metadata, not playback verification.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 11130,
+    "title": "The Princess Diaries 2: Royal Engagement",
+    "year": "2004",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-8d754696-1217-4f89-b8e5-d8f5820a579e",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-8d754696-1217-4f89-b8e5-d8f5820a579e"
+      }
+    ]
+  },
+  {
+    "id": 20048,
+    "title": "Confessions of a Shopaholic",
+    "year": "2009",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-9de6b498-c59d-4627-bdca-b239c5a65e9f",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-9de6b498-c59d-4627-bdca-b239c5a65e9f"
+      }
+    ]
+  },
+  {
+    "id": 13477,
+    "title": "When in Rome",
+    "year": "2010",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "unknown",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-43839576-1339-4a6a-b8cf-583adc02fe4c",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.disneyplus.com/en-gb/browse/entity-43839576-1339-4a6a-b8cf-583adc02fe4c"
+      }
+    ]
+  },
+  {
+    "id": 11846,
+    "title": "Father of the Bride",
+    "year": "1991",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-48e64faf-f76f-4eed-b47f-c7c4b92b475b",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  },
+  {
+    "id": 1314481,
+    "title": "The Devil Wears Prada 2",
+    "year": "2026",
+    "service": "disney",
+    "country": "GB",
+    "language": "und",
+    "scope": "movie",
+    "status": "possible",
+    "source": "https://www.disneyplus.com/en-gb/browse/entity-34bc6b99-813f-4d5d-bbe7-f3099b45879b",
+    "checkedAt": "2026-10-05T19:14:40.930Z",
+    "note": "UK title AD badge; language not identified. English AD remains unconfirmed.",
+    "categoryEvidence": []
+  }
+]

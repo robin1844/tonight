@@ -1,6 +1,6 @@
 # Tonight
 
-Find films included with UK Netflix and Prime Video, ranked using your ratings. No LLM is required.
+Find films included with UK Netflix, Prime Video, Apple TV and Disney+, ranked using your ratings. No LLM is required.
 
 The public app is hosted on GitHub Pages. Ratings and service choices are stored in each browser's local storage; each device has its own profile. Clearing browser data removes those ratings. The original private Sites app keeps its existing household profile in D1.
 
@@ -27,3 +27,9 @@ For private local development, put `TMDB_READ_TOKEN` in an ignored `.env`, run `
 Tests cover subscription eligibility, category discovery, AD confidence, taste ranking, paging, revisions, title search, availability and separation of public catalogue from private ratings. Browser checks cover the About dialog and deployed app; native VoiceOver/JAWS speech has not been tested.
 
 Availability: JustWatch via TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+## Apple TV and Disney+
+
+Netflix and Prime Video remain the only default subscriptions. Saved choices are preserved. Exact base subscription provider names are matched; Apple TV Store and Apple/Amazon paid channels do not qualify. Discovery queries only selected services, while individual title availability checks all supported providers.
+
+`node --env-file=.env screen-additional.mjs` checks a bounded crawl of public UK Apple and Disney movie pages, matches exact title and year, and verifies current UK subscription inclusion. Apple English AD requires the visible UK audio-language section. Disney AD badges do not identify language and count only as possible English AD. Missing metadata remains unknown. Sources expire after 30 days; this index is not exhaustive. See `src/additional-screening-report.json` for the checked sample and `src/additional-ad-seeds.json` for sources.

@@ -27,6 +27,10 @@ test('legacy AD-only preferences migrate to favour AD without losing ratings',as
 test('invalid ratings and unsupported subscriptions cannot be saved',async()=>{
   for(const profile of [{...p,services:['starz']},{...p,country:'US'},{...p,feedback:{'tmdb:1':'made-up'}},{...p,anchors:[{id:'bad',title:'x'}]}])assert.equal((await worker.fetch(request(profile,0),env())).status,400);
 });
+test('new services can be saved without changing existing or default choices',async()=>{
+ const e=env();const boot=await(await worker.fetch(new Request('https://tonight.example/api/boot'),e)).json();assert.deepEqual(boot.profile.services,['netflix','prime']);
+ const saved=await(await worker.fetch(request({...p,services:['netflix','prime','apple','disney']},0),e)).json();assert.deepEqual(saved.profile.services,['netflix','prime','apple','disney']);
+});
 test('oversized profiles are rejected without writes',async()=>{
   const r=new Request('https://tonight.example/api/profile',{method:'POST',headers:{Origin:'https://tonight.example','Content-Type':'application/json'},body:' '.repeat(300001)});
   assert.equal((await worker.fetch(r,env())).status,413);

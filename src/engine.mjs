@@ -1,5 +1,7 @@
 // No AI: deterministic eligibility and weighted, explainable feature matching.
 export const DAY = 86400000;
+export const SERVICES = [{id:'netflix',name:'Netflix',watchName:'Netflix',providerNames:['Netflix']},{id:'prime',name:'Prime Video',watchName:'Prime',providerNames:['Amazon Prime Video']},{id:'apple',name:'Apple TV',watchName:'Apple TV',providerNames:['Apple TV','Apple TV Plus']},{id:'disney',name:'Disney+',watchName:'Disney+',providerNames:['Disney Plus']}];
+export function providerMap(providers){const map=new Map();for(const p of providers){const s=SERVICES.find(s=>s.providerNames.includes(p.provider_name));if(s)map.set(p.provider_id,s.id);}return map;}
 export async function fillEmptySelection(state,{fetchPage,hasMatches,isCurrent=()=>true}) {
   while(!hasMatches(state.titles)&&state.page<state.totalPages&&isCurrent()) {
     const next=await fetchPage(state.page+1);
@@ -40,7 +42,7 @@ export function matchesCategory(title, value) {
   if(!value)return true;
   const category=CATEGORIES.find(c=>c.name===normaliseCategory(value));
   if(!category)return false;
-  if((title.categoryEvidence||[]).some(e=>e.category===category.name && /^https:\/\/(?:www|media)\.netflix\.com\//.test(e.source||'')))return true;
+  if((title.categoryEvidence||[]).some(e=>e.category===category.name && /^https:\/\/(?:(?:www|media)\.netflix\.com\/|www\.disneyplus\.com\/en-gb\/browse\/|www\.apple\.com\/uk\/tv-pr\/)/.test(e.source||'')))return true;
   const genres=title.genres || [];
   if(category.id==='romantic-comedy' && [...genres,...(title.tags||[])].some(isRomcomTag))return true;
   return category.mode==='all' ? category.genres.every(g=>genres.includes(g)) : category.genres.some(g=>genres.includes(g));
@@ -83,7 +85,7 @@ export function adConfidence(title, settings, now=Date.now()) {
   const offers=eligibleOffers(title,{...settings,adOnly:false},now);
   let best={level:0,label:'AD unknown',source:null};
   for(const a of title.adEvidence||[]) {
-    if(a.language!=='en'||!a.source||!fresh(a.checkedAt,now,settings.adMaxAge??30*DAY))continue;
+    if(!(a.language==='en'||(a.language==='und'&&a.status==='possible'))||!a.source||!fresh(a.checkedAt,now,settings.adMaxAge??30*DAY))continue;
     const same=offers.some(o=>o.service===a.service);
     let level=0;
     if(same&&a.country===settings.country&&a.scope==='movie'&&a.status==='available')level=3;

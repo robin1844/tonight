@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-05T19:14:40.930Z",
+  "scope": "Bounded public UK title-page crawl, starting with romance/comedy references. Not exhaustive catalogue coverage; no playback check.",
+  "services": {
+    "apple": {
+      "attempted": 102,
+      "failed": 0,
+      "matched": 17,
+      "available": 17,
+      "possible": 0,
+      "unknown": 0
+    },
+    "disney": {
+      "attempted": 102,
+      "failed": 0,
+      "matched": 95,
+      "available": 0,
+      "possible": 53,
+      "unknown": 42
+    }
+  }
+}
