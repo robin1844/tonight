@@ -26,3 +26,17 @@ test('taste remains the tie-break within an AD confidence group',()=>{
  const titles=[{...movie('A',[evidence()]),tags:['bleak']},{...movie('Z',[evidence()]),tags:['warm']}];
  assert.deepEqual(rankTitles(titles,[{id:'anchor',tags:['warm']}],{...profile,feedback:{anchor:'loved'}},now).map(t=>t.id),['Z','A']);
 });
+
+test('provider AD badges outrank inference while confirmed English remains first',()=>{
+ const badge=evidence({service:'disney',language:'und',status:'possible',kind:'provider-ad-badge',source:'https://www.disneyplus.com/en-gb/browse/entity-test'});
+ const advertised={...movie('badge',[badge]),offers:[{...offer,service:'disney'}]};
+ const catalogue=[movie('unknown'),movie('possible',[evidence({service:'netflix'})]),movie('likely',[evidence({status:'likely'})]),advertised,movie('confirmed',[evidence()])];
+ const selected={...profile,services:['prime','disney']};
+ assert.deepEqual(rankTitles(catalogue,[],selected,now).map(t=>t.id),['confirmed','badge','likely','possible','unknown']);
+ assert.equal(adConfidence(advertised,selected,now).label,'Provider advertises AD · language unverified');
+ assert.equal(adConfidence({...advertised,adEvidence:[{...badge,country:'US'}]},selected,now).level,1);
+ assert.equal(adConfidence({...advertised,adEvidence:[{...badge,language:'es'}]},selected,now).level,0);
+ assert.deepEqual(new Set(rankTitles(catalogue,[],{...selected,favourAD:false},now).map(t=>t.id)),new Set(catalogue.map(t=>t.id)));
+ const warm={...advertised,id:'warm',title:'Z',tags:['warm']},bleak={...advertised,id:'bleak',title:'A',tags:['bleak']};
+ assert.deepEqual(rankTitles([bleak,warm],[{id:'anchor',tags:['warm']}],{...selected,feedback:{anchor:'loved'}},now).map(t=>t.id),['warm','bleak']);
+});

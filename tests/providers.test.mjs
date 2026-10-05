@@ -14,9 +14,9 @@ test('Apple confirms only English AD in the UK visible audio section',()=>{
  assert.equal(screenProvider(page.replace('English (AD, AAC)','English (AAC)'),source,date).status,'unknown');assert.equal(screenProvider(page.replace('en-GB','en-US'),source,date).status,'unknown');assert.equal(screenProvider(page,source.replace('/gb/','/us/'),date),null);
  const embedded='<html lang="en-GB"><h1>CODA</h1><script>English (AD)</script></html>';assert.equal(screenProvider(embedded,source,date).status,'unknown');
 });
-test('Disney badge is possible AD with unidentified language; missing badge is unknown',()=>{
+test('Disney badge has high ranking priority without claiming confirmed English AD',()=>{
  const source='https://www.disneyplus.com/en-gb/browse/entity-test',checkedAt=new Date().toISOString();const page='<img alt="Audio Description"><h1>Pretty Woman</h1><div data-section="Categories">Romantic Comedy, Romance</div>Release Date: 1990';const s=screenProvider(page,source,checkedAt);assert.equal(s.status,'possible');assert.equal(s.language,'und');assert.equal(matchesCategory({categoryEvidence:s.categoryEvidence},'Romantic comedy'),true);
- const title={adEvidence:[s],offers:[{country:'GB',service:'disney',type:'subscription',checkedAt}]},settings={country:'GB',services:['disney'],adMaxAge:30*DAY};assert.equal(adConfidence(title,settings).level,1);assert.equal(adConfidence(title,{...settings,services:['apple']}).level,0);
+ const title={adEvidence:[s],offers:[{country:'GB',service:'disney',type:'subscription',checkedAt}]},settings={country:'GB',services:['disney'],adMaxAge:30*DAY};assert.equal(s.kind,'provider-ad-badge');assert.equal(adConfidence(title,settings).level,3);assert.equal(adConfidence(title,{...settings,services:['apple']}).level,0);
  assert.equal(screenProvider(page.replace('<img alt="Audio Description">','<script>alt="Audio Description"</script>'),source,checkedAt).status,'unknown');
 });
 test('discovery queries selected new subscriptions and exact offer checks reject rentals',async()=>{

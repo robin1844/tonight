@@ -10,7 +10,7 @@ export function screenProvider(html,source,checkedAt){
  const primary=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').split(/<h1\b/i)[0];
  const badge=service==='disney'&&/\balt="Audio Description"/.test(primary);
  const categories=service==='disney'?text(html.match(/data-section="Categories"[^>]*>([\s\S]*?)<\/div>/)?.[1]||''):'';
- return {title,year,service,country:'GB',language:englishAD?'en':'und',scope:'movie',status:englishAD?'available':badge?'possible':'unknown',source,checkedAt,note:service==='apple'?'English AD listed in the UK title audio section; public metadata, not playback verification.':'UK title AD badge; language not identified. English AD remains unconfirmed.',categoryEvidence:/\bRomantic Comedy\b/i.test(categories)?[{category:'Romantic comedy',source}]:[]};
+ return {title,year,service,country:'GB',language:englishAD?'en':'und',scope:'movie',status:englishAD?'available':badge?'possible':'unknown',...(badge?{kind:'provider-ad-badge'}:{}),source,checkedAt,note:service==='apple'?'English AD listed in the UK title audio section; public metadata, not playback verification.':'UK title AD badge; language not identified. English AD remains unconfirmed.',categoryEvidence:/\bRomantic Comedy\b/i.test(categories)?[{category:'Romantic comedy',source}]:[]};
 }
 export function linkedProviderPages(html,service){
  const pattern=service==='apple'?/https:\/\/tv\.apple\.com\/gb\/movie\/[^\s"<>?\\]+/g:/\/en-gb\/browse\/entity-[a-z0-9-]+/g;
