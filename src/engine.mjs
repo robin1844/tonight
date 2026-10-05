@@ -2,6 +2,7 @@
 export const DAY = 86400000;
 export const CATEGORIES = [
   {id:'romantic-comedy',name:'Romantic comedy',genres:['Romance','Comedy'],mode:'all'},
+  {id:'romance',name:'Romance',genres:['Romance']},
   {id:'comedy',name:'Comedy',genres:['Comedy']},
   {id:'drama',name:'Drama',genres:['Drama']},
   {id:'crime',name:'Crime',genres:['Crime']},
@@ -14,11 +15,9 @@ export const CATEGORIES = [
   {id:'action-adventure',name:'Action & adventure',genres:['Action','Adventure']},
   {id:'animation',name:'Animation',genres:['Animation']},
   {id:'family',name:'Family',genres:['Family']},
-  {id:'romance',name:'Romance',genres:['Romance']},
   {id:'history',name:'History',genres:['History']},
   {id:'war',name:'War',genres:['War']},
-  {id:'music',name:'Music',genres:['Music']},
-  {id:'western',name:'Western',genres:['Western']}
+  {id:'music',name:'Music',genres:['Music']}
 ];
 const normaliseTag = value => value.toLowerCase().trim().replace(/[-_\s]+/g,' ');
 export function isRomcomTag(value) {
