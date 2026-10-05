@@ -10,6 +10,8 @@ Private browser app for a shared household taste profile and UK base Netflix/Pri
 - Movie metadata keywords, cast, directors and genres drive explainable weighted ranking. Already seen titles are excluded. Not tonight temporarily dismisses a title without creating a dislike.
 - English AD-only uses four individually checked Netflix films, joined to current eligible Netflix offers. Unknown AD is excluded. Evidence expires after 30 days. This is explicitly limited coverage, not a complete AD catalogue.
 - Six suggestions at a time. Another selection retrieves the next discovery page. Search and taste learning work in every genre; candidate ranking is within the loaded page, not a claim to score every film in the catalogue.
+- The category list is curated: Romantic comedy, Comedy, Drama, Crime, Thriller, Mystery, Horror, Science fiction, Fantasy, Documentary, Action & adventure, Animation, Family, Romance, History, War, Music and Western. TV Movie is omitted because it describes format. Existing saved category choices are retained or mapped to their corresponding new category without changing ratings.
+- Romantic comedy searches two independent subscription-only discovery routes: Romance AND Comedy, and TMDB's exact romcom keyword (9799, verified through keyword search). The routes are merged and deduplicated, with balanced half-page windows so neither route's remaining results are discarded. Classification is applied again to detailed movie metadata and during ranking. Action & adventure accepts either genre. Missing source labels still limit coverage.
 - Visible native controls, skip link, labelled rating inputs, polite updates, keyboard focus management, responsive layout and reduced-motion support.
 
 ## Development
@@ -35,7 +37,7 @@ The Site is owner-private. Its one shared household record assumes that audience
 
 ## Validation
 
-29 unit/integration checks cover eligibility, AD joins, recommendation weights, SQL persistence, optimistic revisions, invalid inputs and cross-origin write rejection. Live local endpoints successfully retrieved UK Netflix/Prime offers and all four checked AD titles. Browser checks verified search, a saved rating surviving reload, AD-only results, loaded posters and responsive layout. Native VoiceOver/JAWS speech has not been tested.
+34 unit/integration checks cover category membership, both romcom discovery routes, pagination coverage, eligibility, AD joins, recommendation weights, SQL persistence, optimistic revisions, invalid inputs and cross-origin write rejection. Live local endpoints successfully retrieved UK Netflix/Prime offers and all four checked AD titles. The category update's live check caught The Lost City through the romcom keyword despite it lacking the Romance/Comedy pair. Browser checks verified search, a saved rating surviving reload, AD-only results, loaded posters and responsive layout. Native VoiceOver/JAWS speech has not been tested.
 
 One optional read-only WebMCP tool reports the visible selection. Valid and invalid calls were tested in the supported browser. It invokes no AI and does not change app state.
 

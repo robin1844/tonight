@@ -1,5 +1,56 @@
 // No AI: deterministic eligibility and weighted, explainable feature matching.
 export const DAY = 86400000;
+export const CATEGORIES = [
+  {id:'romantic-comedy',name:'Romantic comedy',genres:['Romance','Comedy'],mode:'all'},
+  {id:'comedy',name:'Comedy',genres:['Comedy']},
+  {id:'drama',name:'Drama',genres:['Drama']},
+  {id:'crime',name:'Crime',genres:['Crime']},
+  {id:'thriller',name:'Thriller',genres:['Thriller']},
+  {id:'mystery',name:'Mystery',genres:['Mystery']},
+  {id:'horror',name:'Horror',genres:['Horror']},
+  {id:'science-fiction',name:'Science fiction',genres:['Science Fiction']},
+  {id:'fantasy',name:'Fantasy',genres:['Fantasy']},
+  {id:'documentary',name:'Documentary',genres:['Documentary']},
+  {id:'action-adventure',name:'Action & adventure',genres:['Action','Adventure']},
+  {id:'animation',name:'Animation',genres:['Animation']},
+  {id:'family',name:'Family',genres:['Family']},
+  {id:'romance',name:'Romance',genres:['Romance']},
+  {id:'history',name:'History',genres:['History']},
+  {id:'war',name:'War',genres:['War']},
+  {id:'music',name:'Music',genres:['Music']},
+  {id:'western',name:'Western',genres:['Western']}
+];
+const normaliseTag = value => value.toLowerCase().trim().replace(/[-_\s]+/g,' ');
+export function isRomcomTag(value) {
+  return ['romcom','rom com','romantic comedy','romantic comedies'].includes(normaliseTag(value));
+}
+export function normaliseCategory(value) {
+  if(!value) return '';
+  if(['action','adventure'].includes(value.toLowerCase()))return 'Action & adventure';
+  return CATEGORIES.find(c=>c.id===value || c.name.toLowerCase()===value.toLowerCase())?.name || '';
+}
+export function matchesCategory(title, value) {
+  if(!value)return true;
+  const category=CATEGORIES.find(c=>c.name===normaliseCategory(value));
+  if(!category)return false;
+  const genres=title.genres || [];
+  if(category.id==='romantic-comedy' && [...genres,...(title.tags||[])].some(isRomcomTag))return true;
+  return category.mode==='all' ? category.genres.every(g=>genres.includes(g)) : category.genres.some(g=>genres.includes(g));
+}
+export function discoveryBranches(value, sourceGenres) {
+  if(!value)return [{}];
+  const category=CATEGORIES.find(c=>c.name===normaliseCategory(value));
+  if(!category)throw new Error('Unknown film category.');
+  const ids=category.genres.map(name=>sourceGenres.find(g=>g.name===name)?.id);
+  if(ids.some(id=>!id))throw new Error('This category could not be checked. Please try again later.');
+  const branches=[{with_genres:ids.join(category.mode==='all'?',':'|')}];
+  // TMDB /search/keyword returned id 9799, exact name "romcom", checked 5 Oct 2026.
+  if(category.id==='romantic-comedy')branches.push({with_keywords:'9799'});
+  return branches;
+}
+export function discoveryWindow(page, branchCount) {
+  return branchCount===1 ? {sourcePage:page,start:0,size:20} : {sourcePage:Math.ceil(page/2),start:((page-1)%2)*10,size:10};
+}
 export function fresh(at, now, maxAge = DAY) {
   const t = Date.parse(at);
   return Number.isFinite(t) && t <= now && now - t <= maxAge;
@@ -49,7 +100,7 @@ export function rankTitles(catalogue, anchors, profile, now = Date.now()) {
   const seen = new Set(Object.entries(profile.feedback || {})
     .filter(([,r]) => ['loved','liked','disliked','seen'].includes(r)).map(([id]) => id));
   return catalogue.filter(t => t.kind === 'movie' && !seen.has(t.id) &&
-    (!profile.genre || t.genres?.includes(profile.genre)))
+    matchesCategory(t, profile.genre))
     .map(t => {
       const offers = eligibleOffers(t, profile, now);
       const matched = features(t).filter(f => weights.has(f));

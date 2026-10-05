@@ -3,9 +3,9 @@ import css from '../public/style.css';
 import client from '../public/app.js';
 import engine from './engine.mjs?raw';
 import seeds from './ad-seeds.json';
-import { tmdbOffers } from './engine.mjs';
+import { tmdbOffers, CATEGORIES, normaliseCategory, matchesCategory, discoveryBranches, discoveryWindow } from './engine.mjs';
 
-const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romance',adOnly:false,feedback:{},anchors:[]};
+const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romantic comedy',adOnly:false,feedback:{},anchors:[]};
 const ratings = ['loved','liked','disliked','seen','unseen','not-tonight'];
 const headers = {'Content-Security-Policy':"default-src 'self'; img-src 'self' https://image.tmdb.org; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'self' https://*.chatgpt.com https://chatgpt.com; form-action 'self'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
 const json = (data,status=200) => new Response(JSON.stringify(data),{status,headers:{...headers,'Content-Type':'application/json','Cache-Control':'no-store'}});
@@ -70,8 +70,8 @@ async function api(request,env) {
   }
   if(request.method!=='GET')return json({error:'Method not allowed.'},405);
   if(u.pathname==='/api/boot') {
-    const [saved,g]=await Promise.all([profile(env),tmdb('genre/movie/list',env,{language:'en-GB'})]);
-    return json({...saved,genres:g.genres,adCheckedAt:seeds[0].checkedAt});
+    const saved=await profile(env);
+    return json({...saved,profile:{...saved.profile,genre:normaliseCategory(saved.profile.genre)},genres:CATEGORIES,adCheckedAt:seeds[0].checkedAt});
   }
   if(u.pathname==='/api/search') {
     const q=u.searchParams.get('q')?.trim();if(!q||q.length>100)return json({error:'Enter a film title (up to 100 characters).'},400);
@@ -83,14 +83,25 @@ async function api(request,env) {
     return json(await movie(id,env));
   }
   if(u.pathname==='/api/candidates') {
-    const page=Number(u.searchParams.get('page')||1), genre=u.searchParams.get('genre')||'', adOnly=u.searchParams.get('ad')==='1';
-    if(!Number.isInteger(page)||page<1||page>500||!/^\d*$/.test(genre))return json({error:'Invalid selection.'},400);
+    const page=Number(u.searchParams.get('page')||1), requested=u.searchParams.get('genre')||'', adOnly=u.searchParams.get('ad')==='1';
+    if(!Number.isInteger(page)||page<1||page>1000)return json({error:'Invalid selection.'},400);
+    const g=await tmdb('genre/movie/list',env,{language:'en-GB'});
+    const legacy=/^\d+$/.test(requested)?g.genres.find(x=>String(x.id)===requested)?.name:null;
+    const category=normaliseCategory(legacy||requested);
+    if(requested&&!category)return json({error:'Invalid category.'},400);
     const map=await providers(env);
     let ids, totalPages;
     if(adOnly){ids=seeds.map(x=>x.id);totalPages=1;}
-    else{const r=await tmdb('discover/movie',env,{watch_region:'GB',with_watch_providers:[...map.keys()].join('|'),with_watch_monetization_types:'flatrate',with_genres:genre,language:'en-GB',include_adult:false,page});ids=r.results.map(x=>x.id);totalPages=Math.min(500,r.total_pages);}
+    else{
+      const branches=discoveryBranches(category,g.genres), window=discoveryWindow(page,branches.length);
+      if(window.sourcePage>500)return json({error:'Invalid selection.'},400);
+      const results=await Promise.all(branches.map(branch=>tmdb('discover/movie',env,{watch_region:'GB',with_watch_providers:[...map.keys()].join('|'),with_watch_monetization_types:'flatrate',language:'en-GB',include_adult:false,...branch,page:window.sourcePage})));
+      // Two half-pages cover both routes without dropping the second half of either feed.
+      ids=[...new Set(results.flatMap(r=>r.results.slice(window.start,window.start+window.size).map(x=>x.id)))];
+      totalPages=Math.min(500,Math.max(...results.map(r=>r.total_pages)))*branches.length;
+    }
     const titles=[];
-    // Keep concurrency and subrequest counts bounded: <=43 catalogue calls per page.
+    // At most 20 unique films and 44 catalogue calls per page, including both romcom routes.
     for(let start=0;start<ids.length;start+=4) {
       const chunk=await Promise.all(ids.slice(start,start+4).map(async id=>{
         const [t,p]=await Promise.all([movie(id,env),tmdb(`movie/${id}/watch/providers`,env)]);
@@ -102,7 +113,7 @@ async function api(request,env) {
         return t;
       }));titles.push(...chunk);
     }
-    return json({titles,page,totalPages,checkedAt:new Date().toISOString(),adCoverage:'Four checked Netflix films; Prime AD is unverified.'});
+    return json({titles:titles.filter(t=>matchesCategory(t,category)),page,totalPages,checkedAt:new Date().toISOString(),adCoverage:'Four checked Netflix films; Prime AD is unverified.'});
   }
   return json({error:'Not found.'},404);
 }
