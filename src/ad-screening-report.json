@@ -1,0 +1,15 @@
+{
+  "discovered": 364,
+  "checked": 364,
+  "positiveAD": 151,
+  "matched": 102,
+  "unknownIdentity": 49,
+  "failed": 0,
+  "indexed": 102,
+  "checkedAt": "2026-10-05T12:45:27.090Z",
+  "sources": [
+    "https://www.netflix.com/gb/browse/genre/5475",
+    "https://www.netflix.com/gb/browse/genre/8883"
+  ],
+  "scope": "Public UK Netflix romantic comedy and romance browse lists, plus known references. Not the whole Netflix catalogue; Prime AD not screened. Only explicit English AD on movie pages with exact title/year identity matches is included."
+}

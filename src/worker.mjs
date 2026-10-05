@@ -36,7 +36,7 @@ async function movie(id,env) {
     poster:d.poster_path?`https://image.tmdb.org/t/p/w342${d.poster_path}`:null,
     genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||[]).map(x=>x.name),
     cast:(d.credits?.cast||[]).slice(0,8).map(x=>x.name),directors:(d.credits?.crew||[]).filter(x=>x.job==='Director').map(x=>x.name),
-    offers:[],adEvidence:s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]};
+    categoryEvidence:s?.categoryEvidence||[],offers:[],adEvidence:s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]};
 }
 async function profile(env) {
   const r=await env.DB.prepare('SELECT profile, revision FROM household WHERE id = 1').first();
@@ -91,14 +91,16 @@ async function api(request,env) {
     if(requested&&!category)return json({error:'Invalid category.'},400);
     const map=await providers(env);
     let ids, totalPages;
-    if(adOnly){ids=seeds.map(x=>x.id);totalPages=1;}
+    if(adOnly){const pool=category==='Romantic comedy'?seeds.filter(s=>s.categoryEvidence?.some(e=>e.category===category)):seeds;ids=pool.slice((page-1)*20,page*20).map(x=>x.id);totalPages=Math.max(1,Math.ceil(pool.length/20));}
     else{
-      const branches=discoveryBranches(category,g.genres), window=discoveryWindow(page,branches.length);
+      const branches=discoveryBranches(category,g.genres), supplemental=category==='Romantic comedy'?seeds.filter(s=>s.categoryEvidence?.some(e=>e.category===category)):[];
+      const window=discoveryWindow(page,branches.length+(supplemental.length?1:0));
       if(window.sourcePage>500)return json({error:'Invalid selection.'},400);
       const results=await Promise.all(branches.map(branch=>tmdb('discover/movie',env,{watch_region:'GB',with_watch_providers:[...map.keys()].join('|'),with_watch_monetization_types:'flatrate',language:'en-GB',include_adult:false,...branch,page:window.sourcePage})));
-      // Two half-pages cover both routes without dropping the second half of either feed.
-      ids=[...new Set(results.flatMap(r=>r.results.slice(window.start,window.start+window.size).map(x=>x.id)))];
-      totalPages=Math.min(500,Math.max(...results.map(r=>r.total_pages)))*branches.length;
+      const extra=supplemental.slice((window.sourcePage-1)*20,window.sourcePage*20).map(s=>({id:s.id}));
+      const streams=[...results.map(r=>r.results),...(supplemental.length?[extra]:[])];
+      ids=[...new Set(streams.flatMap(r=>r.slice(window.start,window.start+window.size).map(x=>x.id)))];
+      totalPages=Math.min(1000,Math.min(500,Math.max(...results.map(r=>r.total_pages),Math.ceil(supplemental.length/20)))*window.sections);
     }
     const titles=[];
     // At most 20 unique films and 44 catalogue calls per page, including both romcom routes.
@@ -113,7 +115,7 @@ async function api(request,env) {
         return t;
       }));titles.push(...chunk);
     }
-    return json({titles:titles.filter(t=>matchesCategory(t,category)),page,totalPages,checkedAt:new Date().toISOString(),adCoverage:'Four checked Netflix films; Prime AD is unverified.'});
+    return json({titles:titles.filter(t=>matchesCategory(t,category)),page,totalPages,checkedAt:new Date().toISOString(),adIndexed:seeds.length,adCoverage:'Netflix romantic comedy and romance public browse lists; not the full catalogue. Prime AD remains unverified.'});
   }
   return json({error:'Not found.'},404);
 }

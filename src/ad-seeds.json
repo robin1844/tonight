@@ -1,30 +1,1223 @@
 [
   {
-    "id": 449563,
+    "title": "Love at First Sight",
+    "year": 2023,
+    "netflix": "81504327",
+    "checkedAt": "2026-10-05T12:43:12.435Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://media.netflix.com/en/only-on-netflix/81504327"
+      }
+    ],
+    "id": 353577
+  },
+  {
     "title": "Isn't It Romantic",
     "year": 2019,
     "netflix": "80200642",
-    "checkedAt": "2026-10-05T10:58:55.357Z"
+    "checkedAt": "2026-10-05T12:43:12.537Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80200642"
+      }
+    ],
+    "id": 449563
   },
   {
-    "id": 736918,
     "title": "The Noel Diary",
     "year": 2022,
     "netflix": "81045305",
-    "checkedAt": "2026-10-05T10:58:55.357Z"
+    "checkedAt": "2026-10-05T12:43:12.515Z",
+    "categoryEvidence": [],
+    "id": 736918
   },
   {
-    "id": 820912,
     "title": "Persuasion",
     "year": 2022,
     "netflix": "81410649",
-    "checkedAt": "2026-10-05T10:58:55.357Z"
+    "checkedAt": "2026-10-05T12:43:13.435Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81410649"
+      }
+    ],
+    "id": 820912
   },
   {
-    "id": 433252,
     "title": "Our Souls at Night",
     "year": 2017,
     "netflix": "80104068",
-    "checkedAt": "2026-10-05T10:58:55.357Z"
+    "checkedAt": "2026-10-05T12:43:13.454Z",
+    "categoryEvidence": [],
+    "id": 433252
+  },
+  {
+    "title": "Office Romance",
+    "year": 2026,
+    "netflix": "81939823",
+    "checkedAt": "2026-10-05T12:43:14.323Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81939823"
+      }
+    ],
+    "id": 1358005
+  },
+  {
+    "title": "Why Did I Get Married Again?",
+    "year": 2026,
+    "netflix": "82130500",
+    "checkedAt": "2026-10-05T12:43:15.422Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/82130500"
+      }
+    ],
+    "id": 1522689
+  },
+  {
+    "title": "Voicemails for Isabelle",
+    "year": 2026,
+    "netflix": "81716219",
+    "checkedAt": "2026-10-05T12:43:15.405Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81716219"
+      }
+    ],
+    "id": 614945
+  },
+  {
+    "title": "People We Meet on Vacation",
+    "year": 2026,
+    "netflix": "81764371",
+    "checkedAt": "2026-10-05T12:43:16.474Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81764371"
+      }
+    ],
+    "id": 1034716
+  },
+  {
+    "title": "The Wrong Paris",
+    "year": 2025,
+    "netflix": "81700163",
+    "checkedAt": "2026-10-05T12:43:16.297Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81700163"
+      }
+    ],
+    "id": 1321439
+  },
+  {
+    "title": "My Oxford Year",
+    "year": 2025,
+    "netflix": "81287950",
+    "checkedAt": "2026-10-05T12:43:17.457Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81287950"
+      }
+    ],
+    "id": 1307078
+  },
+  {
+    "title": "What Happens in Vegas",
+    "year": 2026,
+    "netflix": "70087535",
+    "checkedAt": "2026-10-05T12:43:19.492Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/70087535"
+      }
+    ],
+    "id": 1710918
+  },
+  {
+    "title": "Champagne Problems",
+    "year": 2025,
+    "netflix": "81628146",
+    "checkedAt": "2026-10-05T12:43:21.063Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81628146"
+      }
+    ],
+    "id": 1323475
+  },
+  {
+    "title": "The Kissing Booth",
+    "year": 2018,
+    "netflix": "80143556",
+    "checkedAt": "2026-10-05T12:43:21.948Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80143556"
+      }
+    ],
+    "id": 454983
+  },
+  {
+    "title": "The Break-Up",
+    "year": 2026,
+    "netflix": "70042688",
+    "checkedAt": "2026-10-05T12:43:23.133Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/70042688"
+      }
+    ],
+    "id": 1728385
+  },
+  {
+    "title": "To All the Boys I’ve Loved Before",
+    "year": 2018,
+    "netflix": "80203147",
+    "checkedAt": "2026-10-05T12:43:24.991Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80203147"
+      }
+    ],
+    "id": 466282
+  },
+  {
+    "title": "A Perfect Pairing",
+    "year": 2022,
+    "netflix": "81241465",
+    "checkedAt": "2026-10-05T12:43:24.959Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81241465"
+      }
+    ],
+    "id": 934761
+  },
+  {
+    "title": "It's Complicated",
+    "year": 2026,
+    "netflix": "70124574",
+    "checkedAt": "2026-10-05T12:43:27.023Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/70124574"
+      }
+    ],
+    "id": 1736039
+  },
+  {
+    "title": "The Princess Switch",
+    "year": 2018,
+    "netflix": "80242926",
+    "checkedAt": "2026-10-05T12:43:27.067Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80242926"
+      }
+    ],
+    "id": 556803
+  },
+  {
+    "title": "Falling Inn Love",
+    "year": 2019,
+    "netflix": "80999781",
+    "checkedAt": "2026-10-05T12:43:28.350Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80999781"
+      }
+    ],
+    "id": 623195
+  },
+  {
+    "title": "My Secret Santa",
+    "year": 2025,
+    "netflix": "81734567",
+    "checkedAt": "2026-10-05T12:43:29.426Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81734567"
+      }
+    ],
+    "id": 1441563
+  },
+  {
+    "title": "Love in the Villa",
+    "year": 2022,
+    "netflix": "81275215",
+    "checkedAt": "2026-10-05T12:43:29.567Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81275215"
+      }
+    ],
+    "id": 934756
+  },
+  {
+    "title": "The Kissing Booth 2",
+    "year": 2020,
+    "netflix": "81026818",
+    "checkedAt": "2026-10-05T12:43:29.531Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81026818"
+      }
+    ],
+    "id": 583083
+  },
+  {
+    "title": "Your Place or Mine",
+    "year": 2023,
+    "netflix": "81045831",
+    "checkedAt": "2026-10-05T12:43:30.516Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81045831"
+      }
+    ],
+    "id": 703451
+  },
+  {
+    "title": "The Royal Treatment",
+    "year": 2022,
+    "netflix": "81228331",
+    "checkedAt": "2026-10-05T12:43:30.624Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81228331"
+      }
+    ],
+    "id": 790142
+  },
+  {
+    "title": "Falling for Christmas",
+    "year": 2022,
+    "netflix": "81416312",
+    "checkedAt": "2026-10-05T12:43:30.586Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81416312"
+      }
+    ],
+    "id": 833097
+  },
+  {
+    "title": "Our Little Secret",
+    "year": 2024,
+    "netflix": "81498404",
+    "checkedAt": "2026-10-05T12:43:31.789Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81498404"
+      }
+    ],
+    "id": 1234811
+  },
+  {
+    "title": "Look Both Ways",
+    "year": 2022,
+    "netflix": "81050546",
+    "checkedAt": "2026-10-05T12:43:33.085Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81050546"
+      }
+    ],
+    "id": 805327
+  },
+  {
+    "title": "Meet Me Next Christmas",
+    "year": 2024,
+    "netflix": "81392060",
+    "checkedAt": "2026-10-05T12:43:33.102Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81392060"
+      }
+    ],
+    "id": 1104171
+  },
+  {
+    "title": "La Dolce Villa",
+    "year": 2025,
+    "netflix": "81346727",
+    "checkedAt": "2026-10-05T12:43:34.300Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81346727"
+      }
+    ],
+    "id": 1252377
+  },
+  {
+    "title": "Holidate",
+    "year": 2020,
+    "netflix": "81034553",
+    "checkedAt": "2026-10-05T12:43:34.248Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81034553"
+      }
+    ],
+    "id": 615665
+  },
+  {
+    "title": "Love, Guaranteed",
+    "year": 2020,
+    "netflix": "81076898",
+    "checkedAt": "2026-10-05T12:43:35.226Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81076898"
+      }
+    ],
+    "id": 644090
+  },
+  {
+    "title": "Tall Girl",
+    "year": 2019,
+    "netflix": "81002412",
+    "checkedAt": "2026-10-05T12:43:35.347Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81002412"
+      }
+    ],
+    "id": 625450
+  },
+  {
+    "title": "Love and Wine",
+    "year": 2025,
+    "netflix": "81717942",
+    "checkedAt": "2026-10-05T12:43:35.249Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81717942"
+      }
+    ],
+    "id": 1572017
+  },
+  {
+    "title": "The Out-Laws",
+    "year": 2023,
+    "netflix": "81186234",
+    "checkedAt": "2026-10-05T12:43:36.255Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81186234"
+      }
+    ],
+    "id": 921636
+  },
+  {
+    "title": "Afterlife of the Party",
+    "year": 2021,
+    "netflix": "81095482",
+    "checkedAt": "2026-10-05T12:43:36.382Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81095482"
+      }
+    ],
+    "id": 785457
+  },
+  {
+    "title": "The Kissing Booth 3",
+    "year": 2021,
+    "netflix": "81026819",
+    "checkedAt": "2026-10-05T12:43:37.259Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81026819"
+      }
+    ],
+    "id": 727745
+  },
+  {
+    "title": "Tall Girl 2",
+    "year": 2022,
+    "netflix": "81194110",
+    "checkedAt": "2026-10-05T12:43:38.783Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81194110"
+      }
+    ],
+    "id": 772272
+  },
+  {
+    "title": "Eurovision Song Contest: The Story of Fire Saga",
+    "year": 2020,
+    "netflix": "80244088",
+    "checkedAt": "2026-10-05T12:43:38.406Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80244088"
+      }
+    ],
+    "id": 531454
+  },
+  {
+    "title": "The Merry Gentlemen",
+    "year": 2024,
+    "netflix": "81766198",
+    "checkedAt": "2026-10-05T12:43:38.313Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81766198"
+      }
+    ],
+    "id": 1290486
+  },
+  {
+    "title": "Irish Wish",
+    "year": 2024,
+    "netflix": "81594532",
+    "checkedAt": "2026-10-05T12:43:40.748Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81594532"
+      }
+    ],
+    "id": 1019420
+  },
+  {
+    "title": "Set It Up",
+    "year": 2018,
+    "netflix": "80184100",
+    "checkedAt": "2026-10-05T12:43:40.738Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80184100"
+      }
+    ],
+    "id": 384677
+  },
+  {
+    "title": "Find Me Falling",
+    "year": 2024,
+    "netflix": "81740504",
+    "checkedAt": "2026-10-05T12:43:41.686Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81740504"
+      }
+    ],
+    "id": 1255350
+  },
+  {
+    "title": "Always Be My Maybe",
+    "year": 2019,
+    "netflix": "80202874",
+    "checkedAt": "2026-10-05T12:43:42.632Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80202874"
+      }
+    ],
+    "id": 513576
+  },
+  {
+    "title": "Happiness for Beginners",
+    "year": 2023,
+    "netflix": "81418617",
+    "checkedAt": "2026-10-05T12:43:42.620Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81418617"
+      }
+    ],
+    "id": 881209
+  },
+  {
+    "title": "The Knight Before Christmas",
+    "year": 2019,
+    "netflix": "81026188",
+    "checkedAt": "2026-10-05T12:43:43.549Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81026188"
+      }
+    ],
+    "id": 611207
+  },
+  {
+    "title": "Nappily Ever After",
+    "year": 2018,
+    "netflix": "80189630",
+    "checkedAt": "2026-10-05T12:43:43.837Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80189630"
+      }
+    ],
+    "id": 519035
+  },
+  {
+    "title": "Emma.",
+    "year": 2026,
+    "netflix": "81178288",
+    "checkedAt": "2026-10-05T12:43:44.846Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81178288"
+      }
+    ],
+    "id": 1655798
+  },
+  {
+    "title": "Players",
+    "year": 2024,
+    "netflix": "81034895",
+    "checkedAt": "2026-10-05T12:43:44.833Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81034895"
+      }
+    ],
+    "id": 843617
+  },
+  {
+    "title": "The Perfect Find",
+    "year": 2023,
+    "netflix": "81030422",
+    "checkedAt": "2026-10-05T12:43:45.810Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81030422"
+      }
+    ],
+    "id": 561717
+  },
+  {
+    "title": "Christmas with You",
+    "year": 2022,
+    "netflix": "81304917",
+    "checkedAt": "2026-10-05T12:43:46.053Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81304917"
+      }
+    ],
+    "id": 936960
+  },
+  {
+    "title": "Meet the Khumalos",
+    "year": 2025,
+    "netflix": "81708891",
+    "checkedAt": "2026-10-05T12:43:46.945Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81708891"
+      }
+    ],
+    "id": 1450863
+  },
+  {
+    "title": "The Half Of It",
+    "year": 2020,
+    "netflix": "81005150",
+    "checkedAt": "2026-10-05T12:43:47.930Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81005150"
+      }
+    ],
+    "id": 597219
+  },
+  {
+    "title": "Trippin' with the Kandasamys",
+    "year": 2021,
+    "netflix": "81307032",
+    "checkedAt": "2026-10-05T12:43:47.850Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81307032"
+      }
+    ],
+    "id": 834500
+  },
+  {
+    "title": "Someone Great",
+    "year": 2019,
+    "netflix": "80202920",
+    "checkedAt": "2026-10-05T12:43:48.916Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80202920"
+      }
+    ],
+    "id": 515248
+  },
+  {
+    "title": "The Princess Switch: Switched Again",
+    "year": 2020,
+    "netflix": "81084350",
+    "checkedAt": "2026-10-05T12:44:05.331Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81084350"
+      }
+    ],
+    "id": 643882
+  },
+  {
+    "title": "You People",
+    "year": 2023,
+    "netflix": "81194505",
+    "checkedAt": "2026-10-05T12:44:05.081Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81194505"
+      }
+    ],
+    "id": 866413
+  },
+  {
+    "title": "He's All That",
+    "year": 2021,
+    "netflix": "81446038",
+    "checkedAt": "2026-10-05T12:44:05.195Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81446038"
+      }
+    ],
+    "id": 347626
+  },
+  {
+    "title": "Mother of the Bride",
+    "year": 2024,
+    "netflix": "81459080",
+    "checkedAt": "2026-10-05T12:44:07.001Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81459080"
+      }
+    ],
+    "id": 1093231
+  },
+  {
+    "title": "Naked",
+    "year": 2017,
+    "netflix": "80142058",
+    "checkedAt": "2026-10-05T12:44:07.987Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80142058"
+      }
+    ],
+    "id": 433251
+  },
+  {
+    "title": "The Perfect Date",
+    "year": 2019,
+    "netflix": "81019888",
+    "checkedAt": "2026-10-05T12:44:08.332Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81019888"
+      }
+    ],
+    "id": 543540
+  },
+  {
+    "title": "The Wrong Missy",
+    "year": 2020,
+    "netflix": "81033865",
+    "checkedAt": "2026-10-05T12:44:09.341Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81033865"
+      }
+    ],
+    "id": 582596
+  },
+  {
+    "title": "That's Amor",
+    "year": 2022,
+    "netflix": "81477801",
+    "checkedAt": "2026-10-05T12:44:10.420Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81477801"
+      }
+    ],
+    "id": 1005835
+  },
+  {
+    "title": "A Merry Little Ex-Mas",
+    "year": 2025,
+    "netflix": "81735104",
+    "checkedAt": "2026-10-05T12:44:10.326Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81735104"
+      }
+    ],
+    "id": 1401318
+  },
+  {
+    "title": "A Tourist's Guide to Love",
+    "year": 2023,
+    "netflix": "81424906",
+    "checkedAt": "2026-10-05T12:44:11.382Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81424906"
+      }
+    ],
+    "id": 813726
+  },
+  {
+    "title": "Love is in the Air",
+    "year": 2023,
+    "netflix": "81674530",
+    "checkedAt": "2026-10-05T12:44:12.573Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81674530"
+      }
+    ],
+    "id": 1167725
+  },
+  {
+    "title": "Jingle Bell Heist",
+    "year": 2025,
+    "netflix": "81928353",
+    "checkedAt": "2026-10-05T12:44:12.344Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81928353"
+      }
+    ],
+    "id": 1218762
+  },
+  {
+    "title": "Fall Into Winter",
+    "year": 2023,
+    "netflix": "81696236",
+    "checkedAt": "2026-10-05T12:44:13.902Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81696236"
+      }
+    ],
+    "id": 1027330
+  },
+  {
+    "title": "I Believe in Santa",
+    "year": 2022,
+    "netflix": "81477797",
+    "checkedAt": "2026-10-05T12:44:14.877Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81477797"
+      }
+    ],
+    "id": 1053110
+  },
+  {
+    "title": "Hot Frosty",
+    "year": 2024,
+    "netflix": "81764579",
+    "checkedAt": "2026-10-05T12:44:14.867Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81764579"
+      }
+    ],
+    "id": 1290287
+  },
+  {
+    "title": "Falling for Figaro",
+    "year": 2021,
+    "netflix": "81507584",
+    "checkedAt": "2026-10-05T12:44:17.543Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81507584"
+      }
+    ],
+    "id": 508444
+  },
+  {
+    "title": "The Incredible Jessica James",
+    "year": 2017,
+    "netflix": "80171022",
+    "checkedAt": "2026-10-05T12:44:24.643Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80171022"
+      }
+    ],
+    "id": 432789
+  },
+  {
+    "title": "Kinda Pregnant",
+    "year": 2025,
+    "netflix": "81416715",
+    "checkedAt": "2026-10-05T12:44:26.770Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81416715"
+      }
+    ],
+    "id": 1212142
+  },
+  {
+    "title": "Good on Paper",
+    "year": 2021,
+    "netflix": "81406319",
+    "checkedAt": "2026-10-05T12:44:28.099Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81406319"
+      }
+    ],
+    "id": 823461
+  },
+  {
+    "title": "Ibiza",
+    "year": 2018,
+    "netflix": "80195049",
+    "checkedAt": "2026-10-05T12:44:27.690Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80195049"
+      }
+    ],
+    "id": 463053
+  },
+  {
+    "title": "Resort to Love",
+    "year": 2021,
+    "netflix": "81076586",
+    "checkedAt": "2026-10-05T12:44:29.898Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81076586"
+      }
+    ],
+    "id": 785539
+  },
+  {
+    "title": "Wedding Season",
+    "year": 2022,
+    "netflix": "81132044",
+    "checkedAt": "2026-10-05T12:44:30.961Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81132044"
+      }
+    ],
+    "id": 818612
+  },
+  {
+    "title": "Alex Strangelove",
+    "year": 2018,
+    "netflix": "80168189",
+    "checkedAt": "2026-10-05T12:44:39.268Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80168189"
+      }
+    ],
+    "id": 511785
+  },
+  {
+    "title": "To All the Boys: P.S. I Still Love You",
+    "year": 2020,
+    "netflix": "81030842",
+    "checkedAt": "2026-10-05T12:44:43.363Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81030842"
+      }
+    ],
+    "id": 565426
+  },
+  {
+    "title": "To All The Boys: Always And Forever",
+    "year": 2021,
+    "netflix": "81040397",
+    "checkedAt": "2026-10-05T12:44:43.245Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81040397"
+      }
+    ],
+    "id": 614409
+  },
+  {
+    "title": "Doing Life",
+    "year": 2026,
+    "netflix": "82023496",
+    "checkedAt": "2026-10-05T12:44:44.578Z",
+    "categoryEvidence": [],
+    "id": 1458857
+  },
+  {
+    "title": "Purple Hearts",
+    "year": 2022,
+    "netflix": "81043665",
+    "checkedAt": "2026-10-05T12:44:45.554Z",
+    "categoryEvidence": [],
+    "id": 762975
+  },
+  {
+    "title": "The Life List",
+    "year": 2025,
+    "netflix": "81246107",
+    "checkedAt": "2026-10-05T12:44:48.224Z",
+    "categoryEvidence": [],
+    "id": 1254786
+  },
+  {
+    "title": "Along for the Ride",
+    "year": 2022,
+    "netflix": "81074938",
+    "checkedAt": "2026-10-05T12:44:50.519Z",
+    "categoryEvidence": [],
+    "id": 778106
+  },
+  {
+    "title": "The Holiday Calendar",
+    "year": 2018,
+    "netflix": "80242446",
+    "checkedAt": "2026-10-05T12:44:50.376Z",
+    "categoryEvidence": [],
+    "id": 555850
+  },
+  {
+    "title": "The In Between",
+    "year": 2022,
+    "netflix": "81447264",
+    "checkedAt": "2026-10-05T12:44:52.367Z",
+    "categoryEvidence": [],
+    "id": 818750
+  },
+  {
+    "title": "After",
+    "year": 2019,
+    "netflix": "80244311",
+    "checkedAt": "2026-10-05T12:44:57.447Z",
+    "categoryEvidence": [],
+    "id": 537915
+  },
+  {
+    "title": "Ruth & Boaz",
+    "year": 2025,
+    "netflix": "81902164",
+    "checkedAt": "2026-10-05T12:44:58.597Z",
+    "categoryEvidence": [],
+    "id": 1371189
+  },
+  {
+    "title": "Bad Influence",
+    "year": 2025,
+    "netflix": "81688846",
+    "checkedAt": "2026-10-05T12:44:58.713Z",
+    "categoryEvidence": [],
+    "id": 1323784
+  },
+  {
+    "title": "Lonely Planet",
+    "year": 2024,
+    "netflix": "81157573",
+    "checkedAt": "2026-10-05T12:44:59.753Z",
+    "categoryEvidence": [],
+    "id": 959429
+  },
+  {
+    "title": "Rebecca",
+    "year": 2020,
+    "netflix": "81002196",
+    "checkedAt": "2026-10-05T12:45:02.871Z",
+    "categoryEvidence": [],
+    "id": 505379
+  },
+  {
+    "title": "Holiday in the Wild",
+    "year": 2019,
+    "netflix": "80231468",
+    "checkedAt": "2026-10-05T12:45:09.378Z",
+    "categoryEvidence": [],
+    "id": 531438
+  },
+  {
+    "title": "A Christmas Prince",
+    "year": 2017,
+    "netflix": "80160759",
+    "checkedAt": "2026-10-05T12:45:09.410Z",
+    "categoryEvidence": [],
+    "id": 483104
+  },
+  {
+    "title": "A Christmas Prince: The Royal Baby",
+    "year": 2019,
+    "netflix": "81029841",
+    "checkedAt": "2026-10-05T12:45:10.076Z",
+    "categoryEvidence": [],
+    "id": 587693
+  },
+  {
+    "title": "Happiness Is",
+    "year": 2024,
+    "netflix": "81645161",
+    "checkedAt": "2026-10-05T12:45:12.828Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81645161"
+      }
+    ],
+    "id": 1371350
+  },
+  {
+    "title": "Hello, Goodbye, and Everything in Between",
+    "year": 2022,
+    "netflix": "81504320",
+    "checkedAt": "2026-10-05T12:45:13.837Z",
+    "categoryEvidence": [],
+    "id": 745376
+  },
+  {
+    "title": "All The Bright Places",
+    "year": 2020,
+    "netflix": "80208802",
+    "checkedAt": "2026-10-05T12:45:15.993Z",
+    "categoryEvidence": [],
+    "id": 342470
+  },
+  {
+    "title": "Let It Snow",
+    "year": 2019,
+    "netflix": "80201542",
+    "checkedAt": "2026-10-05T12:45:17.833Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/80201542"
+      }
+    ],
+    "id": 295151
+  },
+  {
+    "title": "Candy Jar",
+    "year": 2018,
+    "netflix": "80164864",
+    "checkedAt": "2026-10-05T12:45:17.861Z",
+    "categoryEvidence": [],
+    "id": 507143
+  },
+  {
+    "title": "Operation Christmas Drop",
+    "year": 2020,
+    "netflix": "81026186",
+    "checkedAt": "2026-10-05T12:45:22.740Z",
+    "categoryEvidence": [
+      {
+        "category": "Romantic comedy",
+        "source": "https://www.netflix.com/gb/title/81026186"
+      }
+    ],
+    "id": 738646
+  },
+  {
+    "title": "A Christmas Prince: The Royal Wedding",
+    "year": 2018,
+    "netflix": "80238204",
+    "checkedAt": "2026-10-05T12:45:24.177Z",
+    "categoryEvidence": [],
+    "id": 525041
+  },
+  {
+    "title": "I Lost My Body",
+    "year": 2019,
+    "netflix": "81120982",
+    "checkedAt": "2026-10-05T12:45:25.046Z",
+    "categoryEvidence": [],
+    "id": 586940
   }
 ]

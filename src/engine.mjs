@@ -32,6 +32,7 @@ export function matchesCategory(title, value) {
   if(!value)return true;
   const category=CATEGORIES.find(c=>c.name===normaliseCategory(value));
   if(!category)return false;
+  if((title.categoryEvidence||[]).some(e=>e.category===category.name && /^https:\/\/(?:www|media)\.netflix\.com\//.test(e.source||'')))return true;
   const genres=title.genres || [];
   if(category.id==='romantic-comedy' && [...genres,...(title.tags||[])].some(isRomcomTag))return true;
   return category.mode==='all' ? category.genres.every(g=>genres.includes(g)) : category.genres.some(g=>genres.includes(g));
@@ -48,7 +49,8 @@ export function discoveryBranches(value, sourceGenres) {
   return branches;
 }
 export function discoveryWindow(page, branchCount) {
-  return branchCount===1 ? {sourcePage:page,start:0,size:20} : {sourcePage:Math.ceil(page/2),start:((page-1)%2)*10,size:10};
+  const size=Math.floor(20/branchCount),sections=Math.ceil(20/size);
+  return {sourcePage:Math.ceil(page/sections),start:((page-1)%sections)*size,size,sections};
 }
 export function fresh(at, now, maxAge = DAY) {
   const t = Date.parse(at);
