@@ -3,3 +3,5 @@
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.intro{padding:1.5rem 0 1rem;gap:2rem}h1{font-size:clamp(2rem,3vw,2.8rem)}.status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.taste-fold{border-top:1px solid var(--line);margin-top:2rem;padding-top:1rem}.taste-fold>summary{font-size:1.1rem;color:var(--text)}.taste{border:0;margin-top:1rem;padding-top:.5rem}.ad-details{font-size:.875rem;margin-top:.5rem}.film .reason{font-size:.875rem}.ad-badge{font-size:.875rem}.learning:empty{display:none}
 
 #watch-toggle{margin-top:1rem;width:100%}#watch-search{margin:1rem 0 2rem}#watch-search form{margin:1rem 0}#watch-result{margin-top:1rem}#continuation{margin-top:1.5rem}#recommendations{margin-top:1.5rem}
+
+#about-toggle{margin-left:auto}dialog{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:1.5rem;max-width:min(38rem,calc(100% - 2rem));max-height:85vh;overflow:auto}dialog::backdrop{background:#000a}dialog p{line-height:1.6}

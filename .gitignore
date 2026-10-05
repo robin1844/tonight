@@ -4,3 +4,4 @@ node_modules/
 dist/
 preview.sqlite*
 qa/
+pages-dist/

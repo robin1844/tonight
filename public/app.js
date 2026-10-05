@@ -51,3 +51,5 @@ $('watch-query').addEventListener('input',()=>{clearTimeout(watchTimer);watchGen
 $('watch-form').addEventListener('submit',e=>{e.preventDefault();clearTimeout(watchTimer);findWatchFilms();});
 if(document.modelContext?.registerTool){const lifecycle=new AbortController();try{Promise.resolve(document.modelContext.registerTool({name:'read_tonight_selection',title:'Read Tonight selection',description:'Read the current eligible film selection and saved taste counts without changing them.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute(input){if(!input||Object.keys(input).length)throw Error('Expected an empty object.');if(!profile)throw Error('Tonight has not loaded yet.');return {genre:profile.genre,favourAD:profile.favourAD,ratings:Object.keys(profile.feedback).length,titles:selection().map(t=>({title:t.title,services:t.offers.map(o=>o.service),reasons:t.reasons}))};}},{signal:lifecycle.signal})).catch(()=>{});addEventListener('pagehide',()=>lifecycle.abort());}catch{}}
 boot();
+
+$('about-toggle').addEventListener('click',()=>$('about-dialog').showModal());

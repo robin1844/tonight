@@ -1,0 +1,14 @@
+import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
+const {backend}=JSON.parse(await readFile('pages-config.json','utf8'));
+if(!/^https:\/\/[a-z0-9.-]+\.chatgpt\.site\/?$/.test(backend))throw Error('Set the published catalogue origin in pages-config.json.');
+await mkdir('pages-dist',{recursive:true});
+let html=await readFile('public/index.html','utf8');
+html=html.replace('href="/style.css"','href="./style.css"').replace('src="/app.js"','src="./app.js"').replace('href="/"','href="./"').replace('Ratings and services are saved in this private app.','Ratings and services are saved in this browser. Each device has its own taste profile.');
+let client=await readFile('public/app.js','utf8');
+client=client.replace("from '/engine.mjs'","from './engine.mjs'");
+const start=client.indexOf('async function api('),end=client.indexOf('\nfunction error(',start);
+if(start<0||end<0)throw Error('Client API boundary was not found.');
+client=client.slice(0,start)+`const api=createPagesAPI({backend:${JSON.stringify(backend)}});`+client.slice(end);
+client="import {createPagesAPI} from './pages-api.mjs';\n"+client;
+await writeFile('pages-dist/index.html',html);await writeFile('pages-dist/app.js',client);
+await copyFile('public/style.css','pages-dist/style.css');await copyFile('src/engine.mjs','pages-dist/engine.mjs');await copyFile('public/pages-api.mjs','pages-dist/pages-api.mjs');await writeFile('pages-dist/.nojekyll','');
