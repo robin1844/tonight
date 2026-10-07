@@ -27,6 +27,7 @@ export const CATEGORIES = [
   {id:'family',name:'Family',genres:['Family']},
   {id:'history',name:'History',genres:['History']},
   {id:'war',name:'War',genres:['War']},
+  {id:'musical',name:'Musical',genres:[]},
   {id:'music',name:'Music',genres:['Music']}
 ];
 const normaliseTag = value => value.toLowerCase().trim().replace(/[-_\s]+/g,' ');
@@ -44,6 +45,7 @@ export function matchesCategory(title, value) {
   if(!category)return false;
   if((title.categoryEvidence||[]).some(e=>e.category===category.name && /^https:\/\/(?:(?:www|media)\.netflix\.com\/|www\.disneyplus\.com\/en-gb\/browse\/|www\.apple\.com\/uk\/tv-pr\/)/.test(e.source||'')))return true;
   const genres=title.genres || [];
+  if(category.id==='musical')return (title.tags||[]).some(t=>['musical','musicals','rock musical','broadway musical','musical theater','musical comedy','jukebox musical','musical revue','chinese musical'].includes(normaliseTag(t)));
   if(category.id==='romantic-comedy' && [...genres,...(title.tags||[])].some(isRomcomTag))return true;
   return category.mode==='all' ? category.genres.every(g=>genres.includes(g)) : category.genres.some(g=>genres.includes(g));
 }
@@ -51,6 +53,8 @@ export function discoveryBranches(value, sourceGenres) {
   if(!value)return [{}];
   const category=CATEGORIES.find(c=>c.name===normaliseCategory(value));
   if(!category)throw new Error('Unknown film category.');
+  // Exact musical keyword identities verified against TMDB on 7 Oct 2026.
+  if(category.id==='musical')return [{with_keywords:'4344|355890|155710|165241|220201|240462|286529|188715|288062'}];
   const ids=category.genres.map(name=>sourceGenres.find(g=>g.name===name)?.id);
   if(ids.some(id=>!id))throw new Error('This category could not be checked. Please try again later.');
   const branches=[{with_genres:ids.join(category.mode==='all'?',':'|')}];

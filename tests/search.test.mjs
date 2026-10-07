@@ -6,7 +6,8 @@ test('film and series suggestions use exact typed identities when opened',async(
  const original=globalThis.fetch;const calls=[];
  globalThis.fetch=async url=>{
   calls.push(String(url));const path=new URL(url).pathname;
-  if(path.endsWith('/search/multi'))return Response.json({results:[{id:82596,name:'Emily in Paris',first_air_date:'2020-10-02',media_type:'tv'},{id:555,title:'Emily',release_date:'2022-10-14',media_type:'movie'},{id:99,name:'Person',media_type:'person'}]});
+  if(path.endsWith('/search/movie'))return Response.json({results:[{id:555,title:'Emily',release_date:'2022-10-14'}]});
+  if(path.endsWith('/search/tv'))return Response.json({results:[{id:82596,name:'Emily in Paris',first_air_date:'2020-10-02'}]});
   if(path.endsWith('/tv/82596'))return Response.json({id:82596,name:'Emily in Paris',first_air_date:'2020-10-02',genres:[{name:'Comedy'}],keywords:{results:[{name:'paris'}]},credits:{cast:[],crew:[]}});
   if(path.endsWith('/movie/555'))return Response.json({id:555,title:'Emily',release_date:'2022-10-14',genres:[],keywords:{keywords:[]},credits:{cast:[],crew:[]}});
   throw Error('Unexpected route');
