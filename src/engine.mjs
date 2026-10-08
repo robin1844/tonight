@@ -11,24 +11,22 @@ export async function fillEmptySelection(state,{fetchPage,hasMatches,isCurrent=(
   return isCurrent()?state:null;
 }
 export const CATEGORIES = [
-  {id:'romantic-comedy',name:'Romantic comedy',genres:['Romance','Comedy'],mode:'all'},
-  {id:'romance',name:'Romance',genres:['Romance']},
-  {id:'comedy',name:'Comedy',genres:['Comedy']},
-  {id:'drama',name:'Drama',genres:['Drama']},
-  {id:'crime',name:'Crime',genres:['Crime']},
-  {id:'thriller',name:'Thriller',genres:['Thriller']},
-  {id:'mystery',name:'Mystery',genres:['Mystery']},
-  {id:'horror',name:'Horror',genres:['Horror']},
-  {id:'science-fiction',name:'Science fiction',genres:['Science Fiction']},
-  {id:'fantasy',name:'Fantasy',genres:['Fantasy']},
-  {id:'documentary',name:'Documentary',genres:['Documentary']},
   {id:'action-adventure',name:'Action & adventure',genres:['Action','Adventure']},
   {id:'animation',name:'Animation',genres:['Animation']},
+  {id:'comedy',name:'Comedy',genres:['Comedy']},
+  {id:'crime',name:'Crime',genres:['Crime']},
+  {id:'documentary',name:'Documentary',genres:['Documentary']},
+  {id:'drama',name:'Drama',genres:['Drama']},
   {id:'family',name:'Family',genres:['Family']},
+  {id:'fantasy',name:'Fantasy',genres:['Fantasy']},
   {id:'history',name:'History',genres:['History']},
-  {id:'war',name:'War',genres:['War']},
+  {id:'horror',name:'Horror',genres:['Horror']},
   {id:'musical',name:'Musical',genres:[]},
-  {id:'music',name:'Music',genres:['Music']}
+  {id:'mystery',name:'Mystery',genres:['Mystery']},
+  {id:'romance',name:'Romance',genres:['Romance']},
+  {id:'romantic-comedy',name:'Romantic comedy',genres:['Romance','Comedy'],mode:'all'},
+  {id:'science-fiction',name:'Science fiction',genres:['Science Fiction']},
+  {id:'thriller',name:'Thriller',genres:['Thriller']},
 ];
 const normaliseTag = value => value.toLowerCase().trim().replace(/[-_\s]+/g,' ');
 export function isRomcomTag(value) {
