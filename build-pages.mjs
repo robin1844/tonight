@@ -1,7 +1,7 @@
 import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
 const {backend}=JSON.parse(await readFile('pages-config.json','utf8'));
 if(!/^https:\/\/[a-z0-9.-]+\.chatgpt\.site\/?$/.test(backend))throw Error('Set the published catalogue origin in pages-config.json.');
-await mkdir('pages-dist',{recursive:true});
+await mkdir('pages-dist',{recursive:true});await mkdir('pages-dist/flags',{recursive:true});for(const country of ['gb','us','ca'])await copyFile(`public/flags/${country}.svg`,`pages-dist/flags/${country}.svg`);
 let html=await readFile('public/index.html','utf8');
 html=html.replace('href="/style.css"','href="./style.css"').replace('src="/app.js"','src="./app.js"').replace('href="/"','href="./"').replace('Ratings and services are saved in this private app.','Ratings and services are saved in this browser. Each device has its own taste profile.');
 let client=await readFile('public/app.js','utf8');

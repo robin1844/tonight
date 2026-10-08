@@ -1,6 +1,9 @@
 import html from '../public/index.html';
 import css from '../public/style.css';
 import client from '../public/app.js';
+import flagGB from '../public/flags/gb.svg';
+import flagUS from '../public/flags/us.svg';
+import flagCA from '../public/flags/ca.svg';
 import engine from './engine.mjs?raw';
 import seeds from './ad-seeds.json';
 import primeSeeds from './prime-ad-seeds.json';
@@ -147,7 +150,7 @@ export default {async fetch(request,env) {
   const path=new URL(request.url).pathname;
   try {
     if(path.startsWith('/api/'))return await api(request,env);
-    const routes={'/':[html,'text/html; charset=utf-8'],'/style.css':[css,'text/css'],'/app.js':[client,'text/javascript'],'/engine.mjs':[engine,'text/javascript']};
+    const routes={'/':[html,'text/html; charset=utf-8'],'/style.css':[css,'text/css'],'/app.js':[client,'text/javascript'],'/engine.mjs':[engine,'text/javascript'],'/flags/gb.svg':[flagGB,'image/svg+xml'],'/flags/us.svg':[flagUS,'image/svg+xml'],'/flags/ca.svg':[flagCA,'image/svg+xml']};
     const item=routes[path];if(!item)return new Response('Not found',{status:404,headers});
     return new Response(item[0],{headers:{...headers,'Content-Type':item[1],'Cache-Control':'no-cache'}});
   }catch(e){console.error('Tonight request failed:',path,e.name);return json({error:path.startsWith('/api/')?e.message:'Tonight is temporarily unavailable.'},503);}
