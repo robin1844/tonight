@@ -7,3 +7,5 @@
 #about-toggle{margin-left:auto}dialog{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:1.5rem;max-width:min(38rem,calc(100% - 2rem));max-height:85vh;overflow:auto}dialog::backdrop{background:#000a}dialog p{line-height:1.6}
 
 .search-matches{list-style:none;padding:0;margin:1rem 0}.search-match.no-poster{grid-template-columns:1fr}.search-match button{margin-top:.4rem}#search-results .search-matches{grid-template-columns:1fr}
+
+.country-control select{width:auto;min-width:5.5rem;padding-inline:.6rem;}

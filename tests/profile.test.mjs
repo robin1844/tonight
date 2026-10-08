@@ -25,7 +25,7 @@ test('legacy AD-only preferences migrate to favour AD without losing ratings',as
   assert.equal(saved.profile.favourAD,false);
 });
 test('invalid ratings and unsupported subscriptions cannot be saved',async()=>{
-  for(const profile of [{...p,services:['starz']},{...p,country:'US'},{...p,feedback:{'tmdb:1':'made-up'}},{...p,anchors:[{id:'bad',title:'x'}]}])assert.equal((await worker.fetch(request(profile,0),env())).status,400);
+  for(const profile of [{...p,services:['starz']},{...p,country:'FR'},{...p,feedback:{'tmdb:1':'made-up'}},{...p,anchors:[{id:'bad',title:'x'}]}])assert.equal((await worker.fetch(request(profile,0),env())).status,400);
 });
 test('new services can be saved without changing existing or default choices',async()=>{
  const e=env();const boot=await(await worker.fetch(new Request('https://tonight.example/api/boot'),e)).json();assert.deepEqual(boot.profile.services,['netflix','prime']);

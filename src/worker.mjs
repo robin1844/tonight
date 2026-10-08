@@ -6,12 +6,14 @@ import seeds from './ad-seeds.json';
 import primeSeeds from './prime-ad-seeds.json';
 import reviewed from './prime-reviewed-evidence.json';
 import additional from './additional-ad-seeds.json';
+import international from './international-ad-seeds.json';
+import {validCountry,regionalEvidence,regionLanguage} from './regions.mjs';
 import {searchTitles} from './title-search.mjs';
 import { tmdbOffers, CATEGORIES, SERVICES, providerMap, normaliseCategory, matchesCategory, discoveryBranches, discoveryWindow } from './engine.mjs';
 
 const DEFAULT = {country:'GB',services:['netflix','prime'],genre:'Romantic comedy',adOnly:false,favourAD:false,feedback:{},anchors:[]};
 const primeEvidence=[...primeSeeds,...reviewed];
-const indexedIds=[...new Set([...seeds,...primeEvidence,...additional].map(s=>s.id))];
+const indexedIds=[...new Set([...seeds,...primeEvidence,...additional,...international].map(s=>s.id))];
 const ratings = ['loved','liked','disliked','seen','unseen','not-tonight'];
 const headers = {'Content-Security-Policy':"default-src 'self'; img-src 'self' https://image.tmdb.org; style-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'self' https://*.chatgpt.com https://chatgpt.com; form-action 'self'",'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
 const json = (data,status=200) => new Response(JSON.stringify(data),{status,headers:{...headers,'Content-Type':'application/json','Cache-Control':'no-store'}});
@@ -28,27 +30,27 @@ async function tmdb(path, env, params={}) {
   if(cache.size>400)cache.clear();
   cache.set(key,{value,until:Date.now()+3600000});return value;
 }
-async function providers(env) {
-  const r=await tmdb('watch/providers/movie',env,{watch_region:'GB',language:'en-GB'});
+async function providers(env,country='GB') {
+  const r=await tmdb('watch/providers/movie',env,{watch_region:country,language:regionLanguage(country)});
   const map=providerMap(r.results);
   if(!['netflix','prime'].every(s=>[...map.values()].includes(s)))throw new Error('Subscription providers could not be verified. Please try again later.');
   return map;
 }
-async function movie(id,env,kind='movie') {
-  const d=await tmdb(`${kind}/${id}`,env,{language:'en-GB',append_to_response:'keywords,credits'});
+async function movie(id,env,kind='movie',country='GB') {
+  const d=await tmdb(`${kind}/${id}`,env,{language:regionLanguage(country),append_to_response:'keywords,credits'});
   const s=kind==='movie'?seeds.find(x=>x.id===d.id):null;
   return {id:kind==='tv'?`tmdb:tv:${d.id}`:`tmdb:${d.id}`,tmdbId:d.id,title:d.title||d.name,kind,year:(d.release_date||d.first_air_date)?.slice(0,4),overview:d.overview,
     poster:d.poster_path?`https://image.tmdb.org/t/p/w342${d.poster_path}`:null,
     genres:d.genres.map(x=>x.name),tags:(d.keywords?.keywords||d.keywords?.results||[]).map(x=>x.name),
     cast:(d.credits?.cast||[]).slice(0,8).map(x=>x.name),directors:(d.credits?.crew||[]).filter(x=>x.job==='Director').map(x=>x.name),
-    categoryEvidence:[...(s?.categoryEvidence||[]),...(kind==='movie'?additional.filter(x=>x.id===d.id).flatMap(x=>x.categoryEvidence||[]):[])],offers:[],adEvidence:[...(s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]),...(kind==='movie'?[...primeEvidence,...additional].filter(x=>x.id===d.id):[])]};
+    categoryEvidence:[...(s?.categoryEvidence||[]),...(kind==='movie'?additional.filter(x=>x.id===d.id).flatMap(x=>x.categoryEvidence||[]):[])],offers:[],adEvidence:[...(s?[{country:'GB',service:'netflix',language:'en',scope:'movie',status:'available',source:`https://www.netflix.com/gb/title/${s.netflix}`,checkedAt:s.checkedAt}]:[]),...(kind==='movie'?[...primeEvidence,...additional,...international].filter(x=>x.id===d.id):[])].filter(a=>regionalEvidence([a],country).length)};
 }
 async function profile(env) {
   const r=await env.DB.prepare('SELECT profile, revision FROM household WHERE id = 1').first();
   return r?{profile:JSON.parse(r.profile),revision:r.revision}:{profile:DEFAULT,revision:0};
 }
 function validateProfile(p) {
-  if(!p || p.country!=='GB' || !Array.isArray(p.services) || p.services.length>4 || p.services.some(s=>!SERVICES.some(x=>x.id===s)) ||
+  if(!p || !validCountry(p.country) || !Array.isArray(p.services) || p.services.length>4 || p.services.some(s=>!SERVICES.some(x=>x.id===s)) ||
     typeof p.genre!=='string' || p.genre.length>40 || typeof p.adOnly!=='boolean' || !p.feedback || Array.isArray(p.feedback) ||
     Object.entries(p.feedback).length>500 || Object.entries(p.feedback).some(([k,v])=>!/^tmdb:(?:tv:)?\d+$/.test(k)||!ratings.includes(v)) ||
     !Array.isArray(p.anchors) || p.anchors.length>500) throw new Error('Invalid taste profile.');
@@ -57,11 +59,13 @@ function validateProfile(p) {
     for(const key of ['genres','tags','cast','directors'])if(!Array.isArray(a[key])||a[key].length>100||a[key].some(x=>typeof x!=='string'||x.length>200))throw new Error('Invalid film metadata.');
   }
   if(p.favourAD!==undefined&&typeof p.favourAD!=='boolean')throw new Error('Invalid AD preference.');
-  return {country:'GB',services:[...new Set(p.services)],genre:p.genre,adOnly:false,favourAD:p.favourAD??p.adOnly,feedback:p.feedback,
+  return {country:p.country,services:[...new Set(p.services)],genre:p.genre,adOnly:false,favourAD:p.favourAD??p.adOnly,feedback:p.feedback,
     anchors:p.anchors.map(a=>({id:a.id,title:a.title,year:a.year,genres:a.genres,tags:a.tags,cast:a.cast,directors:a.directors}))};
 }
 async function api(request,env) {
   const u=new URL(request.url);
+  const country=u.searchParams.get('country')||'GB';
+  if(!validCountry(country))return json({error:'Choose United Kingdom, United States or Canada.'},400);
   if(request.method==='POST') {
     if(request.headers.get('Origin')!==u.origin||!request.headers.get('Content-Type')?.startsWith('application/json'))return json({error:'This request must come from Tonight.'},403);
     const body=await request.text();if(body.length>300000)return json({error:'The taste profile is too large.'},413);
@@ -86,16 +90,16 @@ async function api(request,env) {
   }
   if(u.pathname==='/api/availability') {
     const id=u.searchParams.get('id');if(!/^\d{1,10}$/.test(id||''))return json({error:'Invalid film.'},400);
-    const [title,offers,map]=await Promise.all([movie(id,env),tmdb(`movie/${id}/watch/providers`,env),providers(env)]);
-    title.offers=tmdbOffers(offers,map,new Date().toISOString());
+    const [title,offers,map]=await Promise.all([movie(id,env,'movie',country),tmdb(`movie/${id}/watch/providers`,env),providers(env,country)]);
+    title.offers=tmdbOffers(offers,map,new Date().toISOString(),country);
     const seed=seeds.find(s=>String(s.id)===id);
-    for(const offer of title.offers){if(offer.service==='netflix'&&seed)offer.directUrl=`https://www.netflix.com/gb/title/${seed.netflix}`;const extra=additional.find(s=>String(s.id)===id&&s.service===offer.service);if(extra)offer.directUrl=extra.source;}
+    for(const offer of title.offers){if(country==='GB'&&offer.service==='netflix'&&seed)offer.directUrl=`https://www.netflix.com/gb/title/${seed.netflix}`;const extra=[...additional,...international].find(s=>s.country===country&&String(s.id)===id&&s.service===offer.service);if(extra)offer.directUrl=extra.source;}
     return json(title);
   }
   if(u.pathname==='/api/movie') {
     const id=u.searchParams.get('id');if(!/^\d{1,10}$/.test(id||''))return json({error:'Invalid film.'},400);
     const kind=u.searchParams.get('kind')||'movie';if(!['movie','tv'].includes(kind))return json({error:'Invalid title type.'},400);
-    return json(await movie(id,env,kind));
+    return json(await movie(id,env,kind,country));
   }
   if(u.pathname==='/api/candidates') {
     const page=Number(u.searchParams.get('page')||1), requested=u.searchParams.get('genre')||'', index=u.searchParams.get('index')==='1';
@@ -104,19 +108,19 @@ async function api(request,env) {
     const legacy=/^\d+$/.test(requested)?g.genres.find(x=>String(x.id)===requested)?.name:null;
     const category=normaliseCategory(legacy||requested);
     if(requested&&!category)return json({error:'Invalid category.'},400);
-    const map=await providers(env);
+    const map=await providers(env,country);
     const selected=(u.searchParams.get('services')??'netflix,prime').split(',').filter(Boolean);
     if(selected.some(s=>!SERVICES.some(x=>x.id===s)))return json({error:'Invalid services.'},400);
     const selectedMap=new Map([...map].filter(([,s])=>selected.includes(s)));
     if(!selected.length)return json({titles:[],page,totalPages:1,checkedAt:new Date().toISOString()});
     if(selected.some(s=>![...map.values()].includes(s)))return json({error:'A selected subscription service could not be checked. Please try again later.'},503);
     let ids, totalPages;
-    if(index){const selectedIds=[...new Set([...(selected.includes('netflix')?seeds:[]),...[...primeEvidence,...additional].filter(s=>selected.includes(s.service))].map(s=>s.id))];ids=selectedIds.slice((page-1)*20,page*20);totalPages=Math.max(1,Math.ceil(selectedIds.length/20));}
+    if(index){const selectedIds=[...new Set([...(country==='GB'&&selected.includes('netflix')?seeds:[]),...regionalEvidence([...primeEvidence,...additional,...international],country).filter(s=>selected.includes(s.service))].map(s=>s.id))];ids=selectedIds.slice((page-1)*20,page*20);totalPages=Math.max(1,Math.ceil(selectedIds.length/20));}
     else{
       const branches=discoveryBranches(category,g.genres), supplemental=category==='Romantic comedy'?[...seeds,...additional].filter(s=>s.categoryEvidence?.some(e=>e.category===category)):[];
       const window=discoveryWindow(page,branches.length+(supplemental.length?1:0));
       if(window.sourcePage>500)return json({error:'Invalid selection.'},400);
-      const results=await Promise.all(branches.map(branch=>tmdb('discover/movie',env,{watch_region:'GB',with_watch_providers:[...selectedMap.keys()].join('|'),with_watch_monetization_types:'flatrate',language:'en-GB',include_adult:false,...branch,page:window.sourcePage})));
+      const results=await Promise.all(branches.map(branch=>tmdb('discover/movie',env,{watch_region:country,with_watch_providers:[...selectedMap.keys()].join('|'),with_watch_monetization_types:'flatrate',language:'en-GB',include_adult:false,...branch,page:window.sourcePage})));
       const extra=supplemental.slice((window.sourcePage-1)*20,window.sourcePage*20).map(s=>({id:s.id}));
       const streams=[...results.map(r=>r.results),...(supplemental.length?[extra]:[])];
       ids=[...new Set(streams.flatMap(r=>r.slice(window.start,window.start+window.size).map(x=>x.id)))];
@@ -126,16 +130,16 @@ async function api(request,env) {
     // At most 20 unique films and 44 catalogue calls per page, including both romcom routes.
     for(let start=0;start<ids.length;start+=4) {
       const chunk=await Promise.all(ids.slice(start,start+4).map(async id=>{
-        const [t,p]=await Promise.all([movie(id,env),tmdb(`movie/${id}/watch/providers`,env)]);
+        const [t,p]=await Promise.all([movie(id,env,'movie',country),tmdb(`movie/${id}/watch/providers`,env)]);
         // Cache retrieval time is not underlying freshness. Limit it to one hour.
         const key=`https://api.themoviedb.org/3/movie/${id}/watch/providers`;
         const checkedAt=new Date((cache.get(key)?.until||Date.now()+3600000)-3600000).toISOString();
-        t.offers=tmdbOffers(p,map,checkedAt);
-        for(const o of t.offers){const s=seeds.find(x=>x.id===id);if(o.service==='netflix'&&s)o.directUrl=`https://www.netflix.com/gb/title/${s.netflix}`;const extra=additional.find(s=>s.id===id&&s.service===o.service);if(extra)o.directUrl=extra.source;}
+        t.offers=tmdbOffers(p,map,checkedAt,country);
+        for(const o of t.offers){const s=seeds.find(x=>x.id===id);if(country==='GB'&&o.service==='netflix'&&s)o.directUrl=`https://www.netflix.com/gb/title/${s.netflix}`;const extra=[...additional,...international].find(s=>s.country===country&&s.id===id&&s.service===o.service);if(extra)o.directUrl=extra.source;}
         return t;
       }));titles.push(...chunk);
     }
-    return json({titles:titles.filter(t=>matchesCategory(t,category)),page,totalPages,checkedAt:new Date().toISOString(),adIndexed:seeds.length,adCoverage:'Netflix romantic comedy and romance public browse lists; not the full catalogue. Prime AD remains unverified.'});
+    return json({titles:titles.filter(t=>matchesCategory(t,category)),page,totalPages,checkedAt:new Date().toISOString(),indexPages:Math.max(1,Math.ceil(new Set([...(country==='GB'&&selected.includes('netflix')?seeds:[]),...regionalEvidence([...primeEvidence,...additional,...international],country).filter(s=>selected.includes(s.service))].map(s=>s.id)).size/20)),adIndexed:country==='GB'?seeds.length:international.filter(s=>s.country===country).length,adCoverage:'Netflix romantic comedy and romance public browse lists; not the full catalogue. Prime AD remains unverified.'});
   }
   return json({error:'Not found.'},404);
 }

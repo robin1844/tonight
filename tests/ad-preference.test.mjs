@@ -14,7 +14,7 @@ test('favour AD keeps the same eligible titles and orders confidence groups',()=
  assert.deepEqual(new Set(regular.map(t=>t.id)),new Set(rankTitles(catalogue,[],profile,now).map(t=>t.id)));
 });
 test('wrong territory or version never qualifies as confirmed; expired evidence becomes unknown',()=>{
- assert.equal(adConfidence(movie('x',[evidence({country:'US'})]),profile,now).level,1);
+ assert.equal(adConfidence(movie('x',[evidence({country:'US'})]),profile,now).level,0);
  assert.equal(adConfidence(movie('x',[evidence({scope:'alternate-version',status:'possible'})]),profile,now).level,1);
  for(const changes of [{language:'es'},{checkedAt:new Date(now-31*DAY).toISOString()},{checkedAt:new Date(now+DAY).toISOString()}])assert.equal(adConfidence(movie('x',[evidence(changes)]),profile,now).level,0);
 });
@@ -34,7 +34,7 @@ test('provider AD badges outrank inference while confirmed English remains first
  const selected={...profile,services:['prime','disney']};
  assert.deepEqual(rankTitles(catalogue,[],selected,now).map(t=>t.id),['confirmed','badge','likely','possible','unknown']);
  assert.equal(adConfidence(advertised,selected,now).label,'Provider advertises AD · language unverified');
- assert.equal(adConfidence({...advertised,adEvidence:[{...badge,country:'US'}]},selected,now).level,1);
+ assert.equal(adConfidence({...advertised,adEvidence:[{...badge,country:'US'}]},selected,now).level,0);
  assert.equal(adConfidence({...advertised,adEvidence:[{...badge,language:'es'}]},selected,now).level,0);
  assert.deepEqual(new Set(rankTitles(catalogue,[],{...selected,favourAD:false},now).map(t=>t.id)),new Set(catalogue.map(t=>t.id)));
  const warm={...advertised,id:'warm',title:'Z',tags:['warm']},bleak={...advertised,id:'bleak',title:'A',tags:['bleak']};

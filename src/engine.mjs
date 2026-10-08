@@ -96,6 +96,7 @@ export function adConfidence(title, settings, now=Date.now()) {
   const offers=eligibleOffers(title,{...settings,adOnly:false},now);
   let best={level:0,label:'AD unknown',source:null};
   for(const a of title.adEvidence||[]) {
+    if(a.country!==settings.country && !(settings.country==='GB'&&a.country==='unknown'))continue;
     if(!(a.language==='en'||(a.language==='und'&&a.status==='possible'))||!a.source||!fresh(a.checkedAt,now,settings.adMaxAge??30*DAY))continue;
     const same=offers.some(o=>o.service===a.service);
     let level=0;
@@ -103,7 +104,7 @@ export function adConfidence(title, settings, now=Date.now()) {
     else if(same&&a.country===settings.country&&a.scope==='movie'&&a.kind==='provider-ad-badge'&&a.status==='possible')level=3;
     else if(same&&a.scope==='movie'&&a.status==='likely')level=2;
     else if(offers.length&&['available','likely','possible'].includes(a.status))level=1;
-    if(level>best.level)best={level,label:['AD unknown','AD possible · version unverified','AD likely · UK track unverified','Provider advertises AD · language unverified','English AD confirmed'][level],source:a.source,service:a.service};
+    if(level>best.level)best={level,label:['AD unknown','AD possible · version unverified','AD likely · local track unverified','Provider advertises AD · language unverified','English AD confirmed'][level],source:a.source,service:a.service};
   }
   return best;
 }
