@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {CATEGORIES,matchesCategory,normaliseCategory,discoveryBranches,discoveryWindow,rankTitles} from '../src/engine.mjs';
+import {CATEGORIES,matchesCategory,normaliseCategory,discoveryBranches,discoveryWindow,rankTitles,filmCategoryLabels} from '../src/engine.mjs';
 test('romcom membership accepts either metadata route, not romance or comedy alone',()=>{
   for(const t of [{genres:['Romance','Comedy']},{genres:['Drama'],tags:['romcom']},{tags:['Romantic-Comedy']},{genres:['Romcom']}])assert.equal(matchesCategory(t,'Romantic comedy'),true);
   for(const t of [{genres:['Romance']},{genres:['Comedy']},{tags:['romance','comedy']},{tags:['not a romcom']},{}])assert.equal(matchesCategory(t,'Romantic comedy'),false);
@@ -26,4 +26,27 @@ test('tag-only romcom is not lost during ranking and subscription checks still a
   const now=Date.now(),offer={country:'GB',service:'netflix',type:'subscription',checkedAt:new Date(now).toISOString()};
   const titles=[{id:'a',title:'Tagged only',kind:'movie',genres:['Drama'],tags:['romcom'],offers:[offer]},{id:'b',title:'Rental',kind:'movie',tags:['romcom'],offers:[{...offer,type:'rent'}]},{id:'c',title:'Romance only',kind:'movie',genres:['Romance'],offers:[offer]}];
   assert.deepEqual(rankTitles(titles,[],{genre:'Romantic comedy',country:'GB',services:['netflix']},now).map(x=>x.id),['a']);
+});
+
+test('every ordinary category requires its actual genre and discovery uses the same rule',()=>{
+ const ordinary=CATEGORIES.filter(c=>!['romantic-comedy','musical'].includes(c.id));
+ const source=[...new Set(ordinary.flatMap(c=>c.genres))].map((name,i)=>({name,id:i+1}));
+ for(const c of ordinary){
+  assert.equal(matchesCategory({genres:[],tags:c.genres},c.name),false,c.name);
+  for(const name of c.genres)assert.equal(matchesCategory({genres:[name]},c.name),true,c.name);
+  const expected=c.genres.map(n=>source.find(g=>g.name===n).id).join('|');
+  assert.deepEqual(discoveryBranches(c.name,source),[{with_genres:expected}],c.name);
+ }
+});
+test('musical identity and display distinguish film versions without confusing adaptations or music',()=>{
+ const musical={title:'The Color Purple',year:'2023',genres:['Drama'],tags:['musical','based on play or musical']};
+ const original={title:'The Color Purple',year:'1985',genres:['Drama'],tags:['jazz singer or musician']};
+ const grease={title:'Grease',year:'1978',genres:['Romance','Comedy'],tags:['musical']};
+ assert.equal(matchesCategory(musical,'Musical'),true);assert.equal(matchesCategory(original,'Musical'),false);
+ assert.equal(matchesCategory({genres:['Music'],tags:['based on play or musical']},'Musical'),false);
+ assert.deepEqual(filmCategoryLabels(grease,'Musical'),['Musical','Romance','Comedy']);
+ assert.deepEqual(filmCategoryLabels(grease),['Musical','Romance','Comedy']);
+ assert.deepEqual(filmCategoryLabels(original,'Musical'),['Drama']);
+ assert.deepEqual(filmCategoryLabels(grease,'Romantic comedy'),['Romantic comedy','Musical','Romance','Comedy']);
+ assert.deepEqual(filmCategoryLabels({genres:['Drama','Crime','Thriller']},'Thriller'),['Thriller','Drama','Crime']);
 });

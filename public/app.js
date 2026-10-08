@@ -1,4 +1,4 @@
-import {rankTitles, eligibleOffers, fillEmptySelection, SERVICES, DAY} from '/engine.mjs';
+import {rankTitles, eligibleOffers, fillEmptySelection, filmCategoryLabels, SERVICES, DAY} from '/engine.mjs';
 const $=id=>document.getElementById(id);
 let profile,revision=0,genres=[],candidates=[],page=1,totalPages=1,busy=false,saveQueue=Promise.resolve(),saveFailed=false,selectedFilm;
 let dismissed=new Set(),adIndexed=0,indexPages=1,evidenceCache=new Map();
@@ -21,7 +21,7 @@ function renderFilms(){const wrap=$('films');wrap.replaceChildren();const ranked
   for(const t of ranked)wrap.append(filmCard(t));
   $('continuation').hidden=page>=totalPages||!profile.services.length;$('continuation').disabled=busy;$('films').setAttribute('aria-busy',String(busy));
 }
-function filmCard(t,context='film'){const article=el('article','film');const image=el('img','poster');image.alt='';image.width=128;image.height=192;image.loading='lazy';if(t.poster)image.src=t.poster;image.addEventListener('error',()=>image.hidden=true);const body=el('div');body.append(el('span','year',[t.year,t.genres.slice(0,2).join(' · ')].filter(Boolean).join(' · ')),el('h3','',t.title));
+function filmCard(t,context='film'){const article=el('article','film');const image=el('img','poster');image.alt='';image.width=128;image.height=192;image.loading='lazy';if(t.poster)image.src=t.poster;image.addEventListener('error',()=>image.hidden=true);const body=el('div');body.append(el('span','year',[t.year,filmCategoryLabels(t,context==='film'?profile.genre:'').join(' · ')].filter(Boolean).join(' · ')),el('h3','',t.title));
     if(t.overview)body.append(el('p','',t.overview));
     const offers=el('div','offers');for(const o of t.offers){const a=el('a','watch',`View on ${SERVICES.find(s=>s.id===o.service)?.watchName||o.service}`);a.href=o.directUrl||o.url;a.target='_blank';a.rel='noopener';offers.append(a);}body.append(offers);
     const select=ratingSelect(t,async value=>{try{await rate(t,value);$(context==='watch'?'watch-title':'recommendations-title').focus();announce(`${t.title}: ${labels[value]||'rating removed'}. Selection updated.`);}catch{}});const label=el('label','', 'Your rating');select.id=`${context}-${t.tmdbId}`;label.htmlFor=select.id;const rating=el('details','film-rating');rating.append(el('summary','','Rate film'),label,select);body.append(rating);article.append(image,body);return article;

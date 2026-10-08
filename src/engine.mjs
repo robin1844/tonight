@@ -62,6 +62,14 @@ export function discoveryBranches(value, sourceGenres) {
   if(category.id==='romantic-comedy')branches.push({with_keywords:'9799'});
   return branches;
 }
+export function filmCategoryLabels(title, selectedCategory='') {
+  const selected=normaliseCategory(selectedCategory);
+  return [...new Set([
+    ...(selected&&matchesCategory(title,selected)?[selected]:[]),
+    ...(matchesCategory(title,'Musical')?['Musical']:[]),
+    ...(title.genres||[])
+  ])];
+}
 export function discoveryWindow(page, branchCount) {
   const size=Math.floor(20/branchCount),sections=Math.ceil(20/size);
   return {sourcePage:Math.ceil(page/sections),start:((page-1)%sections)*size,size,sections};
